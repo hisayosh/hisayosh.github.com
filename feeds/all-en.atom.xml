@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>hisayosh-&gt;blog</title><link href="http://hisayosh.github.io/" rel="alternate"></link><link href="http://hisayosh.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://hisayosh.github.io/</id><updated>2013-07-22T19:19:00+09:00</updated><entry><title>Welcome All</title><link href="http://hisayosh.github.io/posts/2013/07/welcome-all/" rel="alternate"></link><updated>2013-07-22T19:19:00+09:00</updated><author><name>Josef Jezek</name></author><id>tag:hisayosh.github.io,2013-07-22:posts/2013/07/welcome-all/</id><summary type="html">&lt;p&gt;This is the content of my blog post.
 test again
-oops&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
+oops&lt;br&gt;
+test&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
