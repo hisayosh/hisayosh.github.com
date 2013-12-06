@@ -1,5 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>hisayosh-&gt;blog</title><link href="http://hisayosh.github.io/" rel="alternate"></link><link href="http://hisayosh.github.io/feeds/all.atom.xml" rel="self"></link><id>http://hisayosh.github.io/</id><updated>2013-07-22T19:19:00+09:00</updated><entry><title>Welcome All</title><link href="http://hisayosh.github.io/posts/2013/07/welcome-all/" rel="alternate"></link><updated>2013-07-22T19:19:00+09:00</updated><author><name>Josef Jezek</name></author><id>tag:hisayosh.github.io,2013-07-22:posts/2013/07/welcome-all/</id><summary type="html">&lt;p&gt;This is the content of my blog post.
-test again
-oops&lt;br&gt;
-test&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>hisayosh-&gt;blog</title><link href="http://hisayosh.github.io/" rel="alternate"></link><link href="http://hisayosh.github.io/feeds/all.atom.xml" rel="self"></link><id>http://hisayosh.github.io/</id><updated>2013-02-03T19:19:00+09:00</updated><entry><title>Identity Conferene 15</title><link href="http://hisayosh.github.io/posts/2013/02/idcon-15/" rel="alternate"></link><updated>2013-02-03T19:19:00+09:00</updated><author><name>Hisayoshi Tamaki</name></author><id>tag:hisayosh.github.io,2013-02-03:posts/2013/02/idcon-15/</id><summary type="html">&lt;p&gt;Identity Conference 15(#idcon) $B$K;22C$7$F$-$^$7$?!#(B\
+ $BHs&amp;gt;o$KJY6/$K$J$C$?$N$G:#8e$b;22C$G$-$l$P$J$!$H;W$&amp;amp;$HF1;~$K(B\
+ SSO/IDM$B@=IJ$N3+H/$K7H$o$C$?7P83$,$"$j$J$,$i=i;22C$H$$$&amp;amp;&amp;gt;u67$G&amp;gt;/$7H?&amp;gt;J!#(B&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://idcon.doorkeeper.jp/events/2448"&gt;#idcon 15th&lt;/a&gt; /
+&lt;a href="http://togetter.com/li/448517"&gt;Togetther&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Yahoo! JAPAN$B$N(BOAuth/OpenID$B$KBe$o$k?7$7$$G'&amp;gt;ZG'2D5!G=(B -YConnect-&lt;/h2&gt;
+&lt;p&gt;$B%d%U!&amp;lt;3t&amp;lt;02q&amp;lt;R(B $B2OFb(B $B=S2p(B $B;a(B&lt;/p&gt;
+&lt;h3&gt;YConnect$B$H$O!)(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OAuth2.0$B=&lt;code&gt;5r(B / OpenID Connect$B$r%5%]!&amp;lt;%H$N(B Yahoo!
+    $B$N?7G'&amp;gt;ZG'2D%7%9%F%&lt;/code&gt;(B&lt;/li&gt;
+&lt;li&gt;Yahoo! $B$G%m%0%$%s$,2DG=(B&lt;/li&gt;
+&lt;li&gt;$B%f!&lt;a href="&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#37;&amp;#54;&amp;#36;&amp;#78;&amp;#48;&amp;#108;&amp;#73;&amp;#116;&amp;#66;&amp;#48;&amp;#64;&amp;#45;"&gt;&amp;#37;&amp;#54;&amp;#36;&amp;#78;&amp;#48;&amp;#108;&amp;#73;&amp;#116;&amp;#66;&amp;#48;&amp;#64;&amp;#45;&lt;/a&gt;pJs$NO"7H$,2DG=(B&lt;/li&gt;
+&lt;li&gt;OAuth1.0 $B$KHf$Y$F(B RP $B$N&amp;lt;BAu$,MF0W(B&lt;/li&gt;
+&lt;li&gt;2012$BG/Kv!!(BYConnect $B@_7W3+;O(B&lt;/li&gt;
+&lt;li&gt;2012$BG/(B9$B7nCf=!!%Q!&amp;lt;%H%J!&amp;lt;8~$18x3+3+;O(B&lt;/li&gt;
+&lt;li&gt;$B8=:_!!8x3+Cf(B&lt;/li&gt;
+&lt;li&gt;$BBP1~(BAuthorization Grant@OAuth2.0\
+     Authorization Code\
+     Implicit&lt;/li&gt;
+&lt;li&gt;$BBP1~(BProfile@OpenID Connect\
+     Basic Client Profile\
+     Implicit Client Profile&lt;/li&gt;
+&lt;li&gt;100$B%5%$%H0J&amp;gt;e!"(B50$B0J&amp;gt;e$N4k6H$KDs6!(B $BKhF|?7J9&amp;lt;R!"(BGREE$BEyEy(B&lt;/li&gt;
+&lt;li&gt;$B&amp;lt;RFb%"%W%j$K$OB3!9BP1~Cf(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$BMQES$N&amp;gt;R2p(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Yahoo$B%&amp;amp;%)%l%C%H$HO"7H$9$k$3$H$G7h:Q%7%9%F%`$r4JC1$K&amp;lt;BAu(B&lt;/li&gt;
+&lt;li&gt;$BB0@-&amp;gt;pJs$NO"7H(B($B%f!&amp;lt;%6&amp;lt;1JL;R!";aL&amp;gt;!"@8G/7nF|!"%m%1!&amp;lt;%k&amp;gt;pJs!"%a!&amp;lt;%k%"%I%l%9EyEy(B)\
+     $B%W%l%_%"%`4k6H$K$O99$KB?$/$NB0@-&amp;gt;pJs$r3+&amp;lt;($7$F$$$k(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$BF3F~9=@.?^;vNc(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Authorization Code $BMxMQNc(B&lt;/li&gt;
+&lt;li&gt;Implicit $BMxMQNc(B\
+     $B%7!&amp;lt;%1%s%9$N&amp;gt;R2p(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$BN"OC(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OAuth1.0$B$d(BBBAuth$B$O(BYahoo!inc$B$N%m!&amp;lt;%+%i%$%:$@$C$?(B&lt;/li&gt;
+&lt;li&gt;$B%V%i%C%/%\%C%/%9$N$?$a!"%a%s%F%J%s%99)?t$,BgJQ(B\
+     -&gt; YConnect$B$O%U%k%9%/%i%C%A$G3+H/$9$k$3$H$K$h$j$3$NLdBj$r2r7h(B&lt;/li&gt;
+&lt;li&gt;$BA4(BWebAPI$B$N(BSSL$B2=$r9T$&amp;amp;I,MW$,$"$C$?(B\
+     -&gt; $B%o%$%k%I%+!&amp;lt;%I$N&amp;gt;ZL@=q$GBP1~(B&lt;/li&gt;
+&lt;li&gt;$B;EMMM}2r$r?&amp;lt;$a$k$?$a!"(BRFC$B$NK]Lu6HL3$r(BPJ$B$G9T$C$?(B&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apple Store $B$N(B reject $B;vNc(B\&lt;/p&gt;
+&lt;p&gt;$B%V%i%&amp;amp;%6$r3+$$$?%?%$%_%s%0$G%j%s%/$,$"$k$H!"2]6b$N2DG=@-$r;XDj$5$l(Breject$B$5$l$?(B\
+ -&gt; $B%j%s%/$r&amp;gt;J$/$3$H$G2r7h(B\
+ $B%"%W%j%1!&amp;lt;%7%g%s$+$i(Bsafari$B$r;HMQ$7$F(Blogin$B$7$?$i(Breject$B$5$l$?(B\&lt;/p&gt;
+&lt;p&gt;$B!!%m%0%$%s$7$J$$$H;H$($J$$$h$&amp;amp;$J%"%W%j%1!&amp;lt;%7%g%s$O(Breject$B$5$l$k2DG=@-$,$"$k(B\
+ $B!!(B-&gt; $B2r7h:v$O8+$D$+$C$F$$$J$$(B
+-   $BG'&amp;gt;Z(BPF$B0lMw(B\
+ $BMQES$K$h$C$FG'&amp;gt;Z(BPF$B$,J,;6$7!"%f!&amp;lt;%6&amp;lt;1JL;R$bJ,;6$7$F$$$?(B\
+ $B!!(BOAuth1.0 / Open ID2.0 / SSO $BEy(B\
+ $B!!(B-&gt; YConnect$B$G$O&amp;gt;e5-A4$F$r2r7h$7$F$$$k(B
+-   $B0J2&amp;lt;$N5!G=3HD%$r8!F$Cf(B\
+ PPID\
+ OTP$BBP1~$r8!F$Cf(B\
+ $B%7%s%0%k%m%0%"%&amp;amp;%H(B(Session Management)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Q. $B%+%9%?%`(BURI$B%9%-!&amp;lt;%^$,Ho$C$F$7$^$C$?&amp;gt;l9g$N%;%-%e%j%F%#%j%9%/$O!)(B\
+ A. Yahoo!$B$,Ds6!$7$F$$$k%"%W%j$OB&amp;gt;&lt;R$N%"%W%j$HHo$i$J$$$h$&amp;$K$7$F$$$k!#(B\\
+ $B967b&lt;T$,$$$?&gt;l9g!"5;=QE*$K$OHo$i$;$k$3$H$O2DG=!#:#8e$N2]Bj$H$7$F07$&amp;amp;!#(B&lt;/p&gt;
+&lt;h2&gt;$B!V(BAndouroid Android OS$B$N%+%9%?%^%$%:$K$h$k%"%W%j4VE}9gG'&amp;gt;Z$N&amp;lt;B8=!W(B&lt;/h2&gt;
+&lt;p&gt;$B%d%U!&amp;lt;3t&amp;lt;02q&amp;lt;R(B $B0BF#(B $B5AM5(B $B;a(B&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Android OS layor $B$+$i%"%?%C%A(B&lt;/li&gt;
+&lt;li&gt;$B8D?M(B($B&amp;lt;qL#(B)$B$G3+H/(B&lt;/li&gt;
+&lt;li&gt;$B%G%b%s%9%H%l!&amp;lt;%7%g%s(B\
+     Yahoo!$B$N%"%W%jFs&lt;oN`$r;H$$!"0lJ}$N%"%W%j$K%m%0%$%s$9$k$H(B\\
+     $B$b$&amp;0lJ}$GG'&gt;Z$,I,MW$J$/$J$k;EAH$_$r%G%b(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$B!!(B1. Yahoo!$B%a!&amp;lt;%k%"%W%j$N5/F0(B\
+ $B!!!!L$%m%0%$%s&amp;gt;uBV(B\
+ $B!!!!%"%W%j=&lt;em&gt;N;(B\
+ $B!!(B2. Yahoo!$B%V%i%&amp;amp;%6$N5/F0(B\
+ $B!!!!%a!&amp;lt;%k%Z!&amp;lt;%8$r3+$/(B\
+ $B!!!!L$%m%0%$%s&amp;gt;uBV(B\
+ $B!!!!(BUID/PWD$BF~NO(B\
+ $B!!!!%m%0%$%s@.8y!"%3%s%F%s%D3NG'(B\
+ $B!!!!%"%W%j=&lt;/em&gt;N;(B\
+ $B!!(B3. Yahoo!$B%a!&amp;lt;%k%"%W%j$N5/F0(B\
+ $B!!!!%m%0%$%s&amp;gt;uBV$r0];}(B(SSO$B@.8y(B)&lt;/p&gt;
+&lt;h3&gt;$B2~=$FbMF(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;WebKit(OS$B$H%"%W%j$NCf4V%l%$%d!&amp;lt;(B)$B$N2~B$(B&lt;/li&gt;
+&lt;li&gt;$B%m%0%$%s2hLL$r3+$/A0$K%H!&amp;lt;%/%s(B($B%9%H%l!&amp;lt;%8(B)$B$KLd$$9g$o$;$k;EAH$_(B&lt;/li&gt;
+&lt;li&gt;$B%H!&amp;lt;%/%s$O%"%W%j%1!&amp;lt;%7%g%s4V$G6&amp;amp;M-$7$F$$$k(B&lt;/li&gt;
+&lt;li&gt;Android$B$O%"%W%j%1!&amp;lt;%7%g%s$4$H$K(BLinux UID$B$,3d$jEv$F$i$l$F$$$k(B&lt;/li&gt;
+&lt;li&gt;$B%"%W%j$,;HMQ$9$k(B Android $BFb$N(B database file $BEy$O&amp;gt;e5-$N(B UID/GID
+    $B$K$h$j(B 660 $B$N(B permission $B$rIUM?$7!"(B ACL $B$r9T$C$F$$$k(B&lt;/li&gt;
+&lt;li&gt;$B$"$s$I$&amp;amp;$m$$$I$O&amp;gt;e5-$N(B database file
+    $B$KBP$7!"FH&amp;lt;+(Buser(yahoo)$B$N%"%/%;%9$rDI2C(B&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Android$B$N%G!&amp;lt;%?6&amp;amp;M-$NJ}K!(B\
+     Content Provide\
+     $B!!%+%l%s%@!&amp;lt;!"%G!&amp;lt;%?D"$rB&amp;gt;$N%"%W%j$KDs6!(B\
+     Intent\
+     $B!!%"%W%j4V$N%G!&amp;lt;%?$N$d$j$H$j(B\
+     Shared Preference\
+     $B!!%F%-%9%HEy&amp;gt;.$5$J%G!&amp;lt;%?$rJ]B8$9$k!#%"%W%j4V$N6&amp;amp;M-2DG=(B\
+     Shared ID\&lt;/p&gt;
+&lt;p&gt;$B!!(BPlay!Store$B$K(Bupload$B$9$k:]$K!"&amp;gt;ZL@=q$r:n@.$9$k!#F1$8&amp;gt;ZL@=q$r;HMQ$7$F$$$l$PJ#?t$N(Bapplication$B$GF1$8(BUID$B$r9_$k$3$H$,$G$-$k(B\&lt;/p&gt;
+&lt;p&gt;$B!!?.Mj$G$-$kBg4k6H$K$h$jF10l$N&amp;gt;ZL@=q$r;HMQ$7%"%W%j4V$G&amp;gt;pJsO"7H$r9T$&amp;amp;$h$&amp;amp;$K$9$l$P!"=&amp;gt;Mh$H0[$J$k%^!&amp;lt;%1%C%H$r3+Bs$G$-$k$N$G$O(B\
+ $B$=$NB&amp;gt;(B(SQLite, Local File, Internet(Cloud))&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$B%G%P%$%9;~Be$N(BID&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OS$B$r0.$C$F%+%9%?%^%$%:$,$G$-$kN)&amp;gt;l$OHs&amp;gt;o$K6/NO$H46$8$F$$$k(B&lt;/li&gt;
+&lt;li&gt;Apple, Google
+    $B$r$_$F$o$+$k$h$&amp;amp;$K!"(BOS$B%Y%s%@!&amp;lt;$G$"$k$+$i$3$==PMh$k$3$H$OB?$$(B&lt;/li&gt;
+&lt;li&gt;$B$d$j$?$$$3$H!"%;%s%7%F%#%V$J&amp;gt;pJs$N6&amp;amp;M-$O!"(BOS$B$r0.$C$F$$$k$+H]$+$G&amp;lt;+M3EY$,$+$J$jJQ$o$k(B&lt;/li&gt;
+&lt;li&gt;$B%G%P%$%9$N;~Be$K$J$k$H!"%G%P%$%9$N(BID$B$H(BWeb$B$N(BID$B$N6-L\$O:#8eGv$l$F$$$/$H9M$($F$$$k(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Q.$B!!%Q%C%1!&amp;lt;%8L&amp;gt;$G(BYahoo!$B$N%"%W%j$G$"$k$3$H$rH=JL$7$F$$$k(B($BLOB$2DG=!"%W%m%H%?%$%WHG$N$?$a(B)\&lt;/p&gt;
+&lt;p&gt;A.$B!!%"%W%j%1!&amp;lt;%7%g%s$K(Bsignature$B$rIU$1$k$3$H$G@5Ev@-$r3NG'$9$kEy$NBP1~$K$J$k$H?dB,$7$F$$$k(B&lt;/p&gt;
+&lt;p&gt;Q.$B!!%9%H%l!&amp;lt;%8$G2?$r6&amp;amp;M-$7$F$$$?$+(B\
+ A.$B!!(BCookie$B!#K\Mh$O%H!&amp;lt;%/%s$K$J$k$Y$-$H$3$m!#(B&lt;/p&gt;
+&lt;h2&gt;C$B8~$1%5!&amp;lt;%S%9$G(B2$BMWAGG'&amp;gt;Z$rIa5Z$5$;$k$?$a$K$G$-$k$3$H(B&lt;/h2&gt;
+&lt;p&gt;$B3t&amp;lt;02q&amp;lt;R%_%/%7%#(B $B0KEl(B $BNJ(B $B;a(B\
+ &lt;a href="http://www.slideshare.net/ritou/idcon-15th-ritou-2factor-auth"&gt;Slide&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;$B8=&amp;gt;u$H2]Bj(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;C$B8~$1%5!&amp;lt;%S%9$K$*$1$k(B2$BMWAGG'&amp;gt;Z$N8=&amp;gt;u(B&lt;/li&gt;
+&lt;li&gt;$B6bM;7O!"%2!&amp;lt;%`7O$J$I$G$O0JA0$+$iIa5Z(B&lt;/li&gt;
+&lt;li&gt;$B%f!&amp;lt;%6?t$NB?$$%5!&amp;lt;%S%9$b&amp;lt;BAu(B&lt;/li&gt;
+&lt;li&gt;$B%o%s%?%$%`%Q%9%o!&amp;lt;%I$,&amp;lt;BAuJ}K!$H$7$FN.9T(B&lt;/li&gt;
+&lt;li&gt;ID/PWD$BG'&amp;gt;Z(B + $B&amp;amp;A$r%*%W%7%g%s$GDs6!(B&lt;/li&gt;
+&lt;li&gt;$B@H&lt;a href="&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#101;&amp;#64;&amp;#45;&amp;#36;&amp;#100;&amp;#50;&amp;#93;&amp;#66;&amp;#106;&amp;#36;&amp;#75;&amp;#36;&amp;#68;&amp;#36;&amp;#36;&amp;#36;&amp;#70;&amp;#36;&amp;#79;&amp;#76;&amp;#91;&amp;#71;&amp;#39;"&gt;&amp;#101;&amp;#64;&amp;#45;&amp;#36;&amp;#100;&amp;#50;&amp;#93;&amp;#66;&amp;#106;&amp;#36;&amp;#75;&amp;#36;&amp;#68;&amp;#36;&amp;#36;&amp;#36;&amp;#70;&amp;#36;&amp;#79;&amp;#76;&amp;#91;&amp;#71;&amp;#39;&lt;/a&gt;uBV(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$BIa5Z$X$N2]Bj(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$B$D$$$F$3$l$J$$%f!&amp;lt;%6!&amp;lt;(B\
+     $B%5!&amp;lt;%S%9$4$H$N@_Dj$OLLE](B&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$BF3F~$7$K$/$$%W%m%H%3%k$NB8:_(B\
+     POP/IMAP/SMTP, XMPP, $B!D(B\
+     $BG'&amp;gt;Z$H%j%=!&amp;lt;%9%"%/%;%9$N6/$$7k$S$D$-(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$B2r7h:v(B\
+     Yahoo! Google Facebook $BEy$K(B OpenID Connect $B$G(B Rely $B$9$k(B\
+     $B?.Mj$"$k%W%m%P%$%@$NG'&amp;gt;Z6/EY$r$=$N$^$^MxMQ$G$-$k$3$H$,%a%j%C%H(B\&lt;/p&gt;
+&lt;p&gt;$BG'&amp;gt;Z$H%j%=!&amp;lt;%9%"%/%;%9$N6/$$7k$S$D$-$KBP$7!"%"%/%;%9%H!&amp;lt;%/%s$rMxMQ$7$FJ,N%$9$k$3$H$GBP1~(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OpenID Provider$B$,$d$k$Y$-$3$H(B\
+     $BG'&amp;gt;Z6/EY$N8+$($k2=(B\
+     $B!!(BRP$B$+$i$_$F!"(BOP$B$,$I$N$h$&amp;amp;$JG'&amp;gt;Z$r$9$k$N$+$rGD0.$G$-$k$3$H$,Bg@Z(B\
+     $BBP1~$9$kG'&amp;gt;Z6/EY$r3+&amp;lt;((B\
+     $BG'&amp;gt;Z$7$?%f!&amp;lt;%6$NG'&amp;gt;Z6/EY$rDs6!(B\
+     $B5a$a$i$l$kG'&amp;gt;Z6/EY$r(BRP$B$K;XDj$5$;$k(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relying Party$B$,$d$k$Y$-$3$H(B\
+     $B&amp;lt;+$i$N%5!&amp;lt;%S%9!&amp;amp;%f!&amp;lt;%6%"%/%7%g%s$K5a$a$i$l$kG'&amp;gt;Z6/EY$r0U&amp;lt;1$9$k(B\
+     $BE,@Z$J%?%$%_%s%0!"6/EY$G:FG'&amp;gt;Z$rMW5a$9$k(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$B;D$k2]Bj(B\
+     2$BMWAGG'&amp;gt;Z$r:NMQ$7$J$$(BOP$B$O(BG\
+     1 USER per 1 OP $B$NIwD,(B\
+     -&gt; ID/PW + $B&amp;amp;A$OAH$_9g$o$;$K$/$$(B?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$BDI2CG'&amp;gt;Z$KFC2=$7$?G'&amp;gt;Z%W%m%P%$%@(B\
+     RP$BB&amp;amp;$,4{B8(BOP$B$H$NAH$_9g$o$;(B\
+     Trust$B$,=EMW(B\
+     $B!!(BB$B8~$1$K&lt;B@S$N$"$k%5!&lt;%S%9$N?J=P(B\\
+     $BJ*M}%G%P%$%9!"@8BNG'&gt;Z$J$I$N2DG=@-(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$B$^$H$a(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$B:GBg$N2]Bj$O!I$a$s$I$/$5$$!I$H;W$o$;$k%f!&amp;lt;%6%S%j%F%#(B&lt;/li&gt;
+&lt;li&gt;OpenID Connect $B$O=EMW(B&lt;/li&gt;
+&lt;li&gt;$B7P:Q9gM}@-$OJL$H$7$FDI2CG'&amp;gt;Z$KFC2=$7$?G'&amp;gt;Z%W%m%P%$%@$OM-MQ$+$b(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$B&lt;B:]$KDI2CG'&gt;Z$KBP1~$7$?%W%m%P%$%@$r:n@.$7$F$_$?(B - SecondAuth -&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$B%a!&amp;lt;%k%"%I%l%9$,$"$l$PEPO?2DG=(B&lt;/li&gt;
+&lt;li&gt;OTP $BG'&amp;gt;Z$N$_&amp;lt;BAu(B&lt;/li&gt;
+&lt;li&gt;OpenID Connect OP&lt;/li&gt;
+&lt;li&gt;YConnect, Google, Facebook
+    $B$+$i&amp;lt;u$1&amp;lt;h$C$?3NG':Q$_%a!&amp;lt;%k%"%I%l%9$rMxMQ(B&lt;/li&gt;
+&lt;li&gt;OTP $BG'&amp;gt;Z$K$O(B Google Authenticator $B$rMxMQ(B(Server$BB&amp;amp;$N=hM}(B)&lt;/li&gt;
+&lt;li&gt;$B%f!&amp;lt;%6C10L$K(B Secret $B:n@.(B&lt;/li&gt;
+&lt;li&gt;$B@_DjMQ$N(B QR $B%3!&amp;lt;%I@8@.(B&lt;/li&gt;
+&lt;li&gt;otpauth://totp/(mailaddress)?&lt;/li&gt;
+&lt;li&gt;secret=(base43_encoded_otp_secret)&lt;/li&gt;
+&lt;li&gt;$B%f!&amp;lt;%6$O%"%W%j$r%$%s%9%H!&amp;lt;%k$7!"(BQR$B%3!&amp;lt;%I$rFI$_&amp;lt;h$k$@$1(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;$B%j%b!&amp;lt;%H%m%0%"%&amp;amp;%H(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$B8=:_%"%/%F%#%V$J%;%C%7%g%s$r0l854IM}(B&lt;/li&gt;
+&lt;li&gt;$B&amp;lt;j85$GJL$NC&amp;lt;Kv$r%m%0%"%&amp;amp;%H2DG=(B&lt;/li&gt;
+&lt;li&gt;Facebook, Google$B$,&amp;lt;BAu(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;OpenID Connect Session Management&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OP$B$N%m%0%"%&amp;amp;%H$r(BRP$B$+$i8!CN$9$k$?$a$N;EMM(B&lt;/li&gt;
+&lt;li&gt;AuthZ Response $B$K%;%C%7%g%s&amp;lt;1JL;R(B&lt;/li&gt;
+&lt;li&gt;iframe + postMessage$B$rAw$jB3$1$k(B&lt;/li&gt;
+&lt;li&gt;OP$B$N%m%0%"%&amp;amp;%H$r(BRP$B$+$i8!CN$7!"B&amp;gt;$N(BRP$B$N%;%C%7%g%s$b=*$o$i$;$kEy(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;#idcon mini $B$N$*CN$i$;(B&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$B$b$C$H5;=QE*$JOC$r$7$?$$?M8~$1$K(B #idcon mini $B$r7W2h$7$F$$$k(B&lt;/li&gt;
+&lt;li&gt;$B&amp;gt;/?M?t!"(BUST$B$J$7(B&lt;/li&gt;
+&lt;li&gt;$B%"%s%+%s%U%!%l%s%9$b$I$-(B&lt;/li&gt;
+&lt;li&gt;$B5;=Q20$,5$$K$J$k$3$H$r$8$C$/$j$HOC$;$k&amp;gt;l(B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;$B%Q%M%k%G%#%9%+%C%7%g%s!V%9%^%G%P;~Be$\$/$i$O4v$D%Q%9%o!&amp;lt;%I$r;H$&amp;amp;$N$+(B $B!W"((BUST$B$J$7(B&lt;/h2&gt;
+&lt;p&gt;$B%d%U!&amp;lt;3t&amp;lt;02q&lt;R(B $B%;%s%H%i%k%5!&lt;%S%9%+%s%Q%K!&lt;(B $B5;=QD4::&lt;&lt;(B $B&lt;&lt;D9(B $BFo(B $B@57{(B $B;a(B\\
+ $BJF9q!&amp;(BOpenID Foundation $BM};vD9(B $B:jB&lt;(B $B2FI'(B $B;a(B\\
+ $B%;%3%`3t&lt;02q&lt;R(B IS$B8&amp;5f=j(B $B&gt;&amp;gt;K\(B $BBY(B $B;a(B\
+ OpenID Foundation Japan $B;vL36ID9Be9T(B $B9b66(B $B?-OB(B $B;a(B\
+ $BFHN)9T@/K!?M(B $B&amp;gt;pJs=hM}?d?J5!9=(B $B?@ED(B $B2mF)(B $B;a(B&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$B%Q%9%o!&amp;lt;%I$O$I$N$/$i$$A0$+$i$"$k$+(B\
+     1961$BG/:"$i$7$$!#(BIBM$B$N%a%$%s%U%l!&amp;lt;%`!#(B\
+     $B0l:rG/$,%Q%9%o!&amp;lt;%ICB@8(B50$BG/(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SSL$B$,0BA4$G$"$k$H$$$&amp;amp;EZBf$N&amp;gt;e$KG'&amp;gt;Z4pHW$r9M$($F$-$?(B\
+     2011$BG/:"$+$i$-$o$I$$&amp;gt;u67$K$J$C$F$$$k(B\
+     $B=&amp;gt;Mh$NG'&amp;gt;Z4pHW$r0];}$7$F$$$1$k$N$+$r9M$($F$$$+$J$$$H$$$1$J$$;~4|(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SSL/PKI$B$O$J$&amp;lt;4m5!$K4Y$C$?$N$+(B $B!!(B $BK\%;%C%7%g%s$K6=L#$,$"$l$P!"(BPKI DAY
+    2012$B$+$i;qNA$r&amp;lt;hF@(B\&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.jnsa.org/seminar/pki-day/2012/data/PM01_kanda.pdf"&gt;$B%5%$%P!&amp;lt;967b%D!&amp;lt;%k$H$7$F$N8x3+80&amp;gt;ZL@=q$NLr3d(B&lt;/a&gt;\
+ ($B8D?ME*$KI,8+$N;qNA$@$H;W$$$^$9!#(B)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$B%M%C%H$N?.Mj@-$O5;=Q!"@)EY!&amp;amp;1?MQ!"&amp;lt;BAu!"%f!&amp;lt;%6%j%F%i%7$N(B4$BE@$+$iC4J]$5$l$F$$$k(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$B%k!&amp;lt;%H(BCA$B$O(BPKI$B$N(BTrust Anchor&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$B8x3+80&amp;gt;ZL@=q$,0-MQ$5$l$k$N$O$I$s$J$H$-(B?\
+     $B%O%C%-%s%0$NLdBj(B\
+     $B!!EPO?6I$N8!&amp;gt;Z%_%9(B\
+     $B!!G'&amp;gt;Z6I$X$NIT@5%"%/%;%9(B\
+     $B0E9f5;=Q$NLdBj(B\
+     $B!!7W;;NL$K$h$jHkL)80$r3d$j=P$9(B($B8x3+800E9f$N:,K\E*$JLdBj(B)\&lt;/p&gt;
+&lt;p&gt;$B!!??@5$J8x3+80&amp;gt;ZL@=q$H6hJL$,$G$-$J$$IT@5$J&amp;gt;ZL@=q$r7W;;5!$K$h$j56B$(B($B%O%C%7%e4X?t$NLdBj(B)\
+ $B1?MQ$NLdBj(B\
+ $B!!HkL)80$NN.=P(B\
+ $B!!0U?^$;$:HkL)80$r6&amp;amp;M-(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DigiNotar $B$N%1!&amp;lt;%9(B(PKI$B$N4m5!$r&amp;gt;7$$$?;vNc(B)\
+     $BIT@5(BSSL$B%5!&amp;lt;%P&amp;gt;ZL@=q$,(BCA$B5!G=$r&amp;gt;h$C&amp;lt;h$i$l$FH/9T(B\&lt;/p&gt;
+&lt;p&gt;EV-SSL$B%5!&amp;lt;%P&amp;gt;ZL@=qH/9ZMQ(BCA$B$r4^$a!"&amp;gt;/$J$/$H$b(B6$B$D$N(BCA($B5?$$$r4^$a$k$H(B30$B8D0J&amp;gt;e$N(BCA)$B$KIT@5?/F~$5$l!"IT@5(BSSL$B%5!&amp;lt;%P&amp;gt;ZL@&amp;gt;Z$rH/9T(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$B%k!&amp;lt;%H(BCA$B$H$7$F$O$"$^$j$K$b=EBg$J&amp;lt;:BV$,Aj&amp;lt;!$0(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$B;v7oJsF;$5$l$k$^$G$N(B5$B=54V!";v&amp;lt;B$r1#JC$7B3$1$?(B\
+     2011$BG/(B6$B7n(B17$BF|967b$,;O$^$C$F$$$?$3$H$rGD0.(B\&lt;/p&gt;
+&lt;p&gt;2011$BG/(B7$B7n(B19$BF|0J9_!"C;4|4V$KIT@5(BSSL$B%5!&amp;lt;%P&amp;gt;ZL@=q$NH/9T!&amp;amp;&amp;lt;:8z=hM}$,7+$jJV$5$l$F$$$?$K$b4X$o$i$:!":,K\E*$JBP:v$r&lt;h$i$J$+$C$?(B\\
+ 2011$BG/(B7$B7n(B28$BF|%$%i%s$K$*$1$k$GIT@5(BSSL$B%5!&lt;%P&gt;ZL@=q$N0-MQ$rGD0.(B\
+ OS$B$d%V%i%&amp;amp;%6%Y%s%@!&amp;lt;$K$bDLCN$r$7$J$+$C$?(B
+-   $B&lt;gMW%V%i%&amp;%6%Y%s%@!&lt;$NBP=h(B\\
+ DigiNotar $B$N%k!&lt;%H&gt;ZL@=q$r:o=|(B
+-   DigiNotar $B$OGK;:&lt;jB3$-3+;O(B
+-   $B&gt;ZL@=q$r;H$&amp;amp;$N$r0U&amp;lt;1$7$J$$$N$O$J$&amp;lt;!)(B
+$B&lt;B:]$K$O%V%i%&amp;%6$d%"%W%j%1!&lt;%7%g%s$,&lt;+F08!&gt;Z$9$k(B\
+ $BEPO?$5$l$F$$$k!V?.Mj$G$-$kG'&amp;gt;Z6I&amp;gt;ZL@=q!W$r%Y!&amp;lt;%9$KH=Dj(B\
+ $B@_Dj&amp;lt;!Bh$G%j%"%k%?%$%`8!&amp;gt;Z$b2DG=(B\
+ $B:G$b%j%F%i%7$NDc$$?M$K$"$o$;$k$H$3$&amp;amp;$J$C$F$7$^$&amp;amp;!"$H$$$&amp;amp;E57?(B&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;$B0J8e%*%U%l%3ItJ,$,B?$+$C$?$?$a!"3d0&amp;amp;$7$^$9!#(B\
+ $B5-=RFbMF$N4V0c$$Ey$,$"$j$^$7$?$i;XE&amp;amp;D:$1$^$9$H=u$+$j$^$9!#(B&lt;/strong&gt;&lt;/p&gt;</summary><category term="OAuth"></category><category term="OpenID Connect"></category></entry></feed>
