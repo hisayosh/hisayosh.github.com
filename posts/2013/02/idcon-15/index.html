@@ -90,100 +90,98 @@
                 </div>
                 <p>Identity Conference 15(#idcon) に参加してきました。<br />
  非常に勉強になったので今後も参加できればなぁと思うと同時に<br />
- SSO/IDM製品の開発に携わった経験がありながら初参加という状況で少し反省。</p>
-<p><a href="http://idcon.doorkeeper.jp/events/2448">#idcon 15th</a> /
-<a href="http://togetter.com/li/448517">Togetther</a></p>
+ SSO/IDM製品の開発に携わった経験がありながら初参加という状況で少し反省。  </p>
+<p><a href="http://idcon.doorkeeper.jp/events/2448">#idcon 15th</a><br />
+<a href="http://togetter.com/li/448517">Togetther</a>  </p>
 <h2>Yahoo! JAPANのOAuth/OpenIDに代わる新しい認証認可機能 -YConnect-</h2>
-<p>ヤフー株式会社 河内 俊介 氏</p>
+<p>ヤフー株式会社 河内 俊介 氏  </p>
 <h3>YConnectとは？</h3>
 <ul>
-<li>OAuth2.0準拠 / OpenID Connectをサポートの Yahoo!
-    の新認証認可システム</li>
-<li>Yahoo! でログインが可能</li>
-<li>ユーザの一部属性情報の連携が可能</li>
-<li>OAuth1.0 に比べて RP の実装が容易</li>
-<li>2012年末　YConnect 設計開始</li>
-<li>2012年9月中旬　パートナー向け公開開始</li>
-<li>現在　公開中</li>
+<li>OAuth2.0準拠 / OpenID Connectをサポートの Yahoo!<br />
+    の新認証認可システム  </li>
+<li>Yahoo! でログインが可能  </li>
+<li>ユーザの一部属性情報の連携が可能  </li>
+<li>OAuth1.0 に比べて RP の実装が容易  </li>
+<li>2012年末　YConnect 設計開始  </li>
+<li>2012年9月中旬　パートナー向け公開開始  </li>
+<li>現在　公開中  </li>
 <li>対応Authorization Grant@OAuth2.0<br />
      Authorization Code<br />
-     Implicit</li>
+     Implicit  </li>
 <li>対応Profile@OpenID Connect<br />
      Basic Client Profile<br />
-     Implicit Client Profile</li>
-<li>100サイト以上、50以上の企業に提供 毎日新聞社、GREE等等</li>
-<li>社内アプリには続々対応中</li>
+     Implicit Client Profile  </li>
+<li>100サイト以上、50以上の企業に提供 毎日新聞社、GREE等等  </li>
+<li>社内アプリには続々対応中  </li>
 </ul>
 <h3>用途の紹介</h3>
 <ul>
-<li>Yahooウォレットと連携することで決済システムを簡単に実装</li>
+<li>Yahooウォレットと連携することで決済システムを簡単に実装  </li>
 <li>属性情報の連携(ユーザ識別子、氏名、生年月日、ロケール情報、メールアドレス等等)<br />
-     プレミアム企業には更に多くの属性情報を開示している</li>
+     プレミアム企業には更に多くの属性情報を開示している  </li>
 </ul>
 <h3>導入構成図事例</h3>
 <ul>
-<li>Authorization Code 利用例</li>
+<li>Authorization Code 利用例  </li>
 <li>Implicit 利用例<br />
-     シーケンスの紹介</li>
+     シーケンスの紹介  </li>
 </ul>
 <h3>裏話</h3>
 <ul>
-<li>OAuth1.0やBBAuthはYahoo!incのローカライズだった</li>
+<li>OAuth1.0やBBAuthはYahoo!incのローカライズだった  </li>
 <li>ブラックボックスのため、メンテナンス工数が大変<br />
-     -&gt; YConnectはフルスクラッチで開発することによりこの問題を解決</li>
+     -&gt; YConnectはフルスクラッチで開発することによりこの問題を解決  </li>
 <li>全WebAPIのSSL化を行う必要があった<br />
-     -&gt; ワイルドカードの証明書で対応</li>
-<li>仕様理解を深めるため、RFCの翻訳業務をPJで行った</li>
-<li>
-<p>Apple Store の reject 事例  </p>
-<p>ブラウザを開いたタイミングでリンクがあると、課金の可能性を指定されrejectされた<br />
- -&gt; リンクを省くことで解決<br />
- アプリケーションからsafariを使用してloginしたらrejectされた  </p>
-<p>ログインしないと使えないようなアプリケーションはrejectされる可能性がある<br />
- 　-&gt; 解決策は見つかっていない
--   認証PF一覧<br />
- 用途によって認証PFが分散し、ユーザ識別子も分散していた<br />
- 　OAuth1.0 / Open ID2.0 / SSO 等<br />
- 　-&gt; YConnectでは上記全てを解決している
--   以下の機能拡張を検討中<br />
- PPID<br />
- OTP対応を検討中<br />
- シングルログアウト(Session Management)</p>
-</li>
+     -&gt; ワイルドカードの証明書で対応  </li>
+<li>仕様理解を深めるため、RFCの翻訳業務をPJで行った  </li>
+<li>Apple Store の reject 事例<br />
+    ブラウザを開いたタイミングでリンクがあると、課金の可能性を指定されrejectされた<br />
+     -&gt; リンクを省くことで解決<br />
+     アプリケーションからsafariを使用してloginしたらrejectされた<br />
+    ログインしないと使えないようなアプリケーションはrejectされる可能性がある<br />
+     -&gt; 解決策は見つかっていない  </li>
+<li>認証PF一覧<br />
+     用途によって認証PFが分散し、ユーザ識別子も分散していた<br />
+     　OAuth1.0 / Open ID2.0 / SSO 等  <br />
+     　-&gt; YConnectでは上記全てを解決している  </li>
+<li>以下の機能拡張を検討中  <br />
+     PPID  <br />
+     OTP対応を検討中  <br />
+     シングルログアウト(Session Management)  </li>
 </ul>
-<p>Q. カスタムURIスキーマが被ってしまった場合のセキュリティリスクは？<br />
- A. Yahoo!が提供しているアプリは他社のアプリと被らないようにしている。<br />
- 攻撃者がいた場合、技術的には被らせることは可能。今後の課題として扱う。</p>
+<p>Q. カスタムURIスキーマが被ってしまった場合のセキュリティリスクは？  <br />
+ A. Yahoo!が提供しているアプリは他社のアプリと被らないようにしている。  <br />
+ 攻撃者がいた場合、技術的には被らせることは可能。今後の課題として扱う。  </p>
 <h2>「Andouroid Android OSのカスタマイズによるアプリ間統合認証の実現」</h2>
-<p>ヤフー株式会社 安藤 義裕 氏</p>
+<p>ヤフー株式会社 安藤 義裕 氏  </p>
 <ul>
-<li>Android OS layor からアタッチ</li>
-<li>個人(趣味)で開発</li>
+<li>Android OS layor からアタッチ  </li>
+<li>個人(趣味)で開発  </li>
 <li>デモンストレーション<br />
      Yahoo!のアプリ二種類を使い、一方のアプリにログインすると<br />
-     もう一方で認証が必要なくなる仕組みをデモ</li>
+     もう一方で認証が必要なくなる仕組みをデモ  </li>
 </ul>
 <p>1. Yahoo!メールアプリの起動<br />
  　　未ログイン状態<br />
  　　アプリ終了<br />
  　2. Yahoo!ブラウザの起動<br />
  　　メールページを開く<br />
- 　　未ログイン状態<br />
- 　　UID/PWD入力<br />
- 　　ログイン成功、コンテンツ確認<br />
+ 　　未ログイン状態  <br />
+ 　　UID/PWD入力  <br />
+ 　　ログイン成功、コンテンツ確認  <br />
  　　アプリ終了<br />
  　3. Yahoo!メールアプリの起動<br />
- 　　ログイン状態を維持(SSO成功)</p>
+ 　　ログイン状態を維持(SSO成功)  </p>
 <h3>改修内容</h3>
 <ul>
-<li>WebKit(OSとアプリの中間レイヤー)の改造</li>
-<li>ログイン画面を開く前にトークン(ストレージ)に問い合わせる仕組み</li>
-<li>トークンはアプリケーション間で共有している</li>
-<li>AndroidはアプリケーションごとにLinux UIDが割り当てられている</li>
-<li>アプリが使用する Android 内の database file 等は上記の UID/GID
-    により 660 の permission を付与し、 ACL を行っている</li>
-<li>あんどうろいどは上記の database file
-    に対し、独自user(yahoo)のアクセスを追加</li>
+<li>WebKit(OSとアプリの中間レイヤー)の改造  </li>
+<li>ログイン画面を開く前にトークン(ストレージ)に問い合わせる仕組み  </li>
+<li>トークンはアプリケーション間で共有している  </li>
+<li>AndroidはアプリケーションごとにLinux UIDが割り当てられている  </li>
+<li>アプリが使用する Android 内の database file 等は上記の UID/GID<br />
+    により 660 の permission を付与し、 ACL を行っている  </li>
+<li>あんどうろいどは上記の database file<br />
+    に対し、独自user(yahoo)のアクセスを追加  </li>
 <li>
 <p>Androidのデータ共有の方法<br />
      Content Provide<br />
@@ -193,145 +191,145 @@
      Shared Preference<br />
      　テキスト等小さなデータを保存する。アプリ間の共有可能<br />
      Shared ID  </p>
-<p>Play!Storeにuploadする際に、証明書を作成する。同じ証明書を使用していれば複数のapplicationで同じUIDを降ることができる  </p>
+<p>Play!Storeにuploadする際に、証明書を作成する。同じ証明書を使用していれば複数のapplicationで同じUIDを降ることができる    </p>
 <p>信頼できる大企業により同一の証明書を使用しアプリ間で情報連携を行うようにすれば、従来と異なるマーケットを開拓できるのでは<br />
- その他(SQLite, Local File, Internet(Cloud))</p>
+ その他(SQLite, Local File, Internet(Cloud))  </p>
 </li>
 </ul>
 <h3>デバイス時代のID</h3>
 <ul>
-<li>OSを握ってカスタマイズができる立場は非常に強力と感じている</li>
-<li>Apple, Google
-    をみてわかるように、OSベンダーであるからこそ出来ることは多い</li>
-<li>やりたいこと、センシティブな情報の共有は、OSを握っているか否かで自由度がかなり変わる</li>
-<li>デバイスの時代になると、デバイスのIDとWebのIDの境目は今後薄れていくと考えている</li>
+<li>OSを握ってカスタマイズができる立場は非常に強力と感じている  </li>
+<li>Apple, Google<br />
+    をみてわかるように、OSベンダーであるからこそ出来ることは多い  </li>
+<li>やりたいこと、センシティブな情報の共有は、OSを握っているか否かで自由度がかなり変わる  </li>
+<li>デバイスの時代になると、デバイスのIDとWebのIDの境目は今後薄れていくと考えている  </li>
 </ul>
-<p>Q.　パッケージ名でYahoo!のアプリであることを判別している(模造可能、プロトタイプ版のため)  </p>
-<p>A.　アプリケーションにsignatureを付けることで正当性を確認する等の対応になると推測している</p>
+<p>Q.　パッケージ名でYahoo!のアプリであることを判別している(模造可能、プロトタイプ版のため)<br />
+A.　アプリケーションにsignatureを付けることで正当性を確認する等の対応になると推測している  </p>
 <p>Q.　ストレージで何を共有していたか<br />
- A.　Cookie。本来はトークンになるべきところ。</p>
+A.　Cookie。本来はトークンになるべきところ。 </p>
 <h2>C向けサービスで2要素認証を普及させるためにできること</h2>
 <p>株式会社ミクシィ 伊東 諒 氏<br />
-<a href="http://www.slideshare.net/ritou/idcon-15th-ritou-2factor-auth">Slide</a></p>
+<a href="http://www.slideshare.net/ritou/idcon-15th-ritou-2factor-auth">Slide</a>  </p>
 <h3>現状と課題</h3>
 <ul>
-<li>C向けサービスにおける2要素認証の現状</li>
-<li>金融系、ゲーム系などでは以前から普及</li>
-<li>ユーザ数の多いサービスも実装</li>
-<li>ワンタイムパスワードが実装方法として流行</li>
-<li>ID/PWD認証 + αをオプションで提供</li>
-<li>脆弱性や課題については黙認状態</li>
+<li>C向けサービスにおける2要素認証の現状 </li>
+<li>金融系、ゲーム系などでは以前から普及 </li>
+<li>ユーザ数の多いサービスも実装  </li>
+<li>ワンタイムパスワードが実装方法として流行  </li>
+<li>ID/PWD認証 + αをオプションで提供  </li>
+<li>脆弱性や課題については黙認状態  </li>
 </ul>
 <h3>普及への課題</h3>
 <ul>
 <li>ついてこれないユーザー<br />
-     サービスごとの設定は面倒</li>
+     サービスごとの設定は面倒  </li>
 <li>
 <p>導入しにくいプロトコルの存在<br />
-     POP/IMAP/SMTP, XMPP, …<br />
-     認証とリソースアクセスの強い結びつき</p>
+     POP/IMAP/SMTP, XMPP, … <br />
+     認証とリソースアクセスの強い結びつき  </p>
 </li>
 <li>
 <p>解決策<br />
      Yahoo! Google Facebook 等に OpenID Connect で Rely する<br />
      信頼あるプロバイダの認証強度をそのまま利用できることがメリット  </p>
-<p>認証とリソースアクセスの強い結びつきに対し、アクセストークンを利用して分離することで対応</p>
+<p>認証とリソースアクセスの強い結びつきに対し、アクセストークンを利用して分離することで対応  </p>
 </li>
 <li>
 <p>OpenID Providerがやるべきこと<br />
      認証強度の見える化<br />
-     　RPからみて、OPがどのような認証をするのかを把握できることが大切<br />
+     　RPからみて、OPがどのような認証をするのかを把握できることが大切 
      対応する認証強度を開示<br />
      認証したユーザの認証強度を提供<br />
-     求められる認証強度をRPに指定させる</p>
+     求められる認証強度をRPに指定させる  </p>
 </li>
 <li>
 <p>Relying Partyがやるべきこと<br />
-     自らのサービス・ユーザアクションに求められる認証強度を意識する<br />
-     適切なタイミング、強度で再認証を要求する</p>
+     自らのサービス・ユーザアクションに求められる認証強度を意識する 
+     適切なタイミング、強度で再認証を要求する  </p>
 </li>
 <li>
 <p>残る課題<br />
      2要素認証を採用しないOPはG<br />
      1 USER per 1 OP の風潮<br />
-     -&gt; ID/PW + αは組み合わせにくい?</p>
+     -&gt; ID/PW + αは組み合わせにくい?  </p>
 </li>
 <li>
 <p>追加認証に特化した認証プロバイダ<br />
      RP側が既存OPとの組み合わせ<br />
      Trustが重要<br />
      　B向けに実績のあるサービスの進出<br />
-     物理デバイス、生体認証などの可能性</p>
+     物理デバイス、生体認証などの可能性  </p>
 </li>
 </ul>
 <h3>まとめ</h3>
 <ul>
-<li>最大の課題は”めんどくさい”と思わせるユーザビリティ</li>
-<li>OpenID Connect は重要</li>
-<li>経済合理性は別として追加認証に特化した認証プロバイダは有用かも</li>
+<li>最大の課題は”めんどくさい”と思わせるユーザビリティ  </li>
+<li>OpenID Connect は重要  </li>
+<li>経済合理性は別として追加認証に特化した認証プロバイダは有用かも  </li>
 </ul>
 <h3>実際に追加認証に対応したプロバイダを作成してみた - SecondAuth -</h3>
 <ul>
-<li>メールアドレスがあれば登録可能</li>
-<li>OTP 認証のみ実装</li>
-<li>OpenID Connect OP</li>
-<li>YConnect, Google, Facebook
-    から受け取った確認済みメールアドレスを利用</li>
-<li>OTP 認証には Google Authenticator を利用(Server側の処理)</li>
-<li>ユーザ単位に Secret 作成</li>
-<li>設定用の QR コード生成</li>
-<li>otpauth://totp/(mailaddress)?</li>
-<li>secret=(base43_encoded_otp_secret)</li>
-<li>ユーザはアプリをインストールし、QRコードを読み取るだけ</li>
+<li>メールアドレスがあれば登録可能  </li>
+<li>OTP 認証のみ実装  </li>
+<li>OpenID Connect OP  </li>
+<li>YConnect, Google, Faceboo  k
+    から受け取った確認済みメールアドレスを利用  </li>
+<li>OTP 認証には Google Authenticator を利用(Server側の処理)  </li>
+<li>ユーザ単位に Secret 作成  </li>
+<li>設定用の QR コード生成  </li>
+<li>otpauth://totp/(mailaddress)  </li>
+<li>secret=(base43_encoded_otp_secret)  </li>
+<li>ユーザはアプリをインストールし、QRコードを読み取るだけ  </li>
 </ul>
 <h3>リモートログアウト</h3>
 <ul>
-<li>現在アクティブなセッションを一元管理</li>
-<li>手元で別の端末をログアウト可能</li>
-<li>Facebook, Googleが実装</li>
+<li>現在アクティブなセッションを一元管理  </li>
+<li>手元で別の端末をログアウト可能  </li>
+<li>Facebook, Googleが実装  </li>
 </ul>
 <h3>OpenID Connect Session Management</h3>
 <ul>
-<li>OPのログアウトをRPから検知するための仕様</li>
-<li>AuthZ Response にセッション識別子</li>
-<li>iframe + postMessageを送り続ける</li>
-<li>OPのログアウトをRPから検知し、他のRPのセッションも終わらせる等</li>
+<li>OPのログアウトをRPから検知するための仕様  </li>
+<li>AuthZ Response にセッション識別子  </li>
+<li>iframe + postMessageを送り続ける  </li>
+<li>OPのログアウトをRPから検知し、他のRPのセッションも終わらせる等  </li>
 </ul>
 <h3>#idcon mini のお知らせ</h3>
 <ul>
-<li>もっと技術的な話をしたい人向けに #idcon mini を計画している</li>
-<li>少人数、USTなし</li>
-<li>アンカンファレンスもどき</li>
-<li>技術屋が気になることをじっくりと話せる場</li>
+<li>もっと技術的な話をしたい人向けに #idcon mini を計画している </li>
+<li>少人数、USTなし  </li>
+<li>アンカンファレンスもどき  </li>
+<li>技術屋が気になることをじっくりと話せる場  </li>
 </ul>
 <h2>パネルディスカッション「スマデバ時代ぼくらは幾つパスワードを使うのか 」※USTなし</h2>
 <p>ヤフー株式会社 セントラルサービスカンパニー 技術調査室 室長 楠 正憲 氏<br />
  米国・OpenID Foundation 理事長 崎村 夏彦 氏<br />
  セコム株式会社 IS研究所 松本 泰 氏<br />
  OpenID Foundation Japan 事務局長代行 高橋 伸和 氏<br />
- 独立行政法人 情報処理推進機構 神田 雅透 氏</p>
+ 独立行政法人 情報処理推進機構 神田 雅透 氏  </p>
 <ul>
 <li>
 <p>パスワードはどのくらい前からあるか<br />
      1961年頃らしい。IBMのメインフレーム。<br />
-     一昨年がパスワード誕生50年</p>
+     一昨年がパスワード誕生50年  </p>
 </li>
 <li>
 <p>SSLが安全であるという土台の上に認証基盤を考えてきた<br />
      2011年頃からきわどい状況になっている<br />
-     従来の認証基盤を維持していけるのかを考えていかないといけない時期</p>
+     従来の認証基盤を維持していけるのかを考えていかないといけない時期  </p>
 </li>
 <li>
-<p>SSL/PKIはなぜ危機に陥ったのか 　 本セッションに興味があれば、PKI DAY
+<p>SSL/PKIはなぜ危機に陥ったのか 　 本セッションに興味があれば、PKI DAY<br />
     2012から資料を取得  </p>
 <p><a href="http://www.jnsa.org/seminar/pki-day/2012/data/PM01_kanda.pdf">サイバー攻撃ツールとしての公開鍵証明書の役割</a><br />
- (個人的に必見の資料だと思います。)</p>
+ (個人的に必見の資料だと思います。)  </p>
 </li>
 <li>
-<p>ネットの信頼性は技術、制度・運用、実装、ユーザリテラシの4点から担保されている</p>
+<p>ネットの信頼性は技術、制度・運用、実装、ユーザリテラシの4点から担保されている  </p>
 </li>
 <li>
-<p>ルートCAはPKIのTrust Anchor</p>
+<p>ルートCAはPKIのTrust Anchor  </p>
 </li>
 <li>
 <p>公開鍵証明書が悪用されるのはどんなとき?<br />
@@ -343,30 +341,30 @@
 <p>真正な公開鍵証明書と区別ができない不正な証明書を計算機により偽造(ハッシュ関数の問題)<br />
  運用の問題<br />
  　秘密鍵の流出<br />
- 　意図せず秘密鍵を共有</p>
+ 　意図せず秘密鍵を共有  </p>
 </li>
 <li>
 <p>DigiNotar のケース(PKIの危機を招いた事例)<br />
-     不正SSLサーバ証明書がCA機能を乗っ取られて発行  </p>
-<p>EV-SSLサーバ証明書発酵用CAを含め、少なくとも6つのCA(疑いを含めると30個以上のCA)に不正侵入され、不正SSLサーバ証明証を発行</p>
+     不正SSLサーバ証明書がCA機能を乗っ取られて発行 </p>
+<p>EV-SSLサーバ証明書発酵用CAを含め、少なくとも6つのCA(疑いを含めると30個以上のCA)に不正侵入され、不正SSLサーバ証明証を発行  </p>
 </li>
 <li>
-<p>ルートCAとしてはあまりにも重大な失態が相次ぐ</p>
+<p>ルートCAとしてはあまりにも重大な失態が相次ぐ  </p>
 </li>
 <li>
 <p>事件報道されるまでの5週間、事実を隠蔽し続けた<br />
      2011年6月17日攻撃が始まっていたことを把握  </p>
 <p>2011年7月19日以降、短期間に不正SSLサーバ証明書の発行・失効処理が繰り返されていたにも関わらず、根本的な対策を取らなかった<br />
  2011年7月28日イランにおけるで不正SSLサーバ証明書の悪用を把握<br />
- OSやブラウザベンダーにも通知をしなかった
+ OSやブラウザベンダーにも通知をしなかった<br />
 -   主要ブラウザベンダーの対処<br />
- DigiNotar のルート証明書を削除
--   DigiNotar は破産手続き開始
--   証明書を使うのを意識しないのはなぜ？
+ DigiNotar のルート証明書を削除<br />
+-   DigiNotar は破産手続き開始<br />
+-   証明書を使うのを意識しないのはなぜ？<br />
 実際にはブラウザやアプリケーションが自動検証する<br />
  登録されている「信頼できる認証局証明書」をベースに判定<br />
  設定次第でリアルタイム検証も可能<br />
- 最もリテラシの低い人にあわせるとこうなってしまう、という典型</p>
+ 最もリテラシの低い人にあわせるとこうなってしまう、という典型  </p>
 </li>
 </ul>
 <p><strong>以後オフレコ部分が多かったため、割愛します。<br />
@@ -420,13 +418,13 @@
 
             <li class="list-group-item"><a href="../../../../tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/oauth.html">
-                        OAuth
+                    <a href="../../../../tag/openid-connect.html">
+                        OpenID Connect
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/openid-connect.html">
-                        OpenID Connect
+                    <a href="../../../../tag/oauth.html">
+                        OAuth
                     </a>
                 </li>
         </ul>
