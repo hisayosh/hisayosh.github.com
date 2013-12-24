@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>hisayosh-&gt;blog</title><link href="http://hisayosh.github.io/" rel="alternate"></link><link href="http://hisayosh.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://hisayosh.github.io/</id><updated>2013-02-03T19:19:00+09:00</updated><entry><title>Identity Conferene 15</title><link href="http://hisayosh.github.io/posts/2013/02/idcon-15/" rel="alternate"></link><updated>2013-02-03T19:19:00+09:00</updated><author><name>Hisayoshi Tamaki</name></author><id>tag:hisayosh.github.io,2013-02-03:posts/2013/02/idcon-15/</id><summary type="html">&lt;p&gt;Identity Conference 15(#idcon) に参加してきました。&lt;br /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>hisayosh-&gt;blog</title><link href="http://hisayosh.github.io/" rel="alternate"></link><link href="http://hisayosh.github.io/feeds/all-en.atom.xml" rel="self"></link><id>http://hisayosh.github.io/</id><updated>2013-12-24T12:25:00+09:00</updated><entry><title>新208.5日問題 - Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</title><link href="http://hisayosh.github.io/posts/2013/12/208days-problem/" rel="alternate"></link><updated>2013-12-24T12:25:00+09:00</updated><author><name>Hisayoshi Tamaki</name></author><id>tag:hisayosh.github.io,2013-12-24:posts/2013/12/208days-problem/</id><summary type="html">&lt;p&gt;Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により再度類似の不具合が発生することが分かっています。  &lt;/p&gt;
+&lt;p&gt;旧 208.5 日問題の発生原理に関しては以下の blog がよくまとまっています。&lt;br /&gt;
+&lt;a href="http://kenichiokuyama.blogspot.jp/2011/12/schedclock-overflow-after-2085-days-in.html"&gt;okkyの銀河制圧奇譚 : sched_clock() overflow after 208.5 days in Linux Kernel&lt;/a&gt;  &lt;/p&gt;
+&lt;h3&gt;影響範囲&lt;/h3&gt;
+&lt;p&gt;旧 208.5 日問題の対策パッチがあたっている Linux Kernel であっても、本 208.5 日問題は異なるロジックにより発生するため、影響を受けます。
+Red Hat Enterprise Linux 6.2, 6.3, and 6.4 
+(kernel 2.6.32-220, 2.6.32-279, and 2.6.32-358 series)  &lt;/p&gt;
+&lt;h3&gt;不具合発生&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Intel Xeon E5 シリーズのプロセッサーを利用していること  &lt;/li&gt;
+&lt;li&gt;上記影響範囲に記述した Linux Kernel のうち、修正パッチが当たっていないもの（これらのバージョンのうち現在稼働中の RHEL 及び RHEL 系サーバはほとんどが該当すると思います。）  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;※RHEL では kernel-2.6.32-220.45.1.el6 (6.2), kernel-2.6.32-279.37.2.el6 (6.3), kernel-2.6.32-358.23.2.el6 (6.4), kernel-2.6.32-431.el6 (6.5) で修正されているようです。  &lt;/p&gt;
+&lt;h3&gt;結論&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;不具合対象の環境は、サーバ停止・起動に関する一時的な運用オペレーションの見直しが必要です。サーバ再起動は cold reboot にしましょう。  &lt;/li&gt;
+&lt;li&gt;根本解決には、対策パッチをあてるか、kernel code を修正してリビルドしたものを組み込みましょう  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;不具合発生原理　旧 208.5 日問題のおさらい&lt;/h3&gt;
+&lt;p&gt;旧 208.5 日問題は以下のインライン関数が原因となり発生します。CPU 内の TSC (Time Stamp Counter) の値を nano sec order の clock として利用するためのロジックです。CYCNS_SCALE_FACTOR は整数の 10 を表します。  &lt;/p&gt;
+&lt;p&gt;linux-2.6.32-220 : /arch/x86/include/asm/timer.h  &lt;/p&gt;
+&lt;p CYC2NS_SCALE_FACTOR_="CYC2NS_SCALE_FACTOR;
+" _="&amp;gt;&amp;gt;" cpu="cpu" cpu_="cpu)" cyc="cyc" int="int" long="long" ns="ns" ns_="ns;
+" per_cpu_cyc2ns_="per_cpu(cyc2ns," per_cpu_cyc2ns_offset_="per_cpu(cyc2ns_offset," return="return" smp_processor_id_="smp_processor_id();
+" unsigned="unsigned"&gt;static inline unsigned long long __cycles_2_ns(unsigned long long cyc)&lt;/p&gt;
+&lt;p&gt;ご覧の通り、TSC の値を TSC * SC &amp;gt;&amp;gt; 10 することで 64 bit 変数に nano sec を代入しようとしているので、10 bit shift が行われる前の段階では pico sec order の演算を行うことになります。pico sec order の 1 秒を表現するためには、約 40 bit の空間が必要となります。変数が 64 bit であるため、 1 秒以上の表現のためには残り約 24 bit 程しかなく、208.5日問題における 208.5 日とは、この約 24 bit で表現できる日数の上限を表したものになっています。（この日数を超えると overflow が発生します。）  &lt;/p&gt;
+&lt;h3&gt;不具合発生原理　新 208.5 日問題の解説&lt;/h3&gt;
+&lt;p&gt;Linux Kernel を起動する際、各種初期化処理を行う start_kernel()内 で x86_late_time_init() という関数が呼び出されます。&lt;/p&gt;
+&lt;p&gt;linux-2.6.32.358 : /arch/x86/kernel/time.c&lt;/p&gt;
+&lt;p _="
+" tsc_init_="tsc_init();
+" x86_init.timers.timer_init_="x86_init.timers.timer_init();
+"&gt;static __init void x86_late_time_init(void)&lt;/p&gt;
+&lt;p&gt;このうち、tsc_init() の中で、cyc2ns_offset の初期化を行います。この初期化処理は、旧 208.5 日問題と同一のロジックを経由します。しかし、Linux の起動時には、 CPU の仕様として TSC がリセットされるはずであり、Linux 起動プロセスの初期段階である本関数がコールされる時点で TSC が 208.5 日に到達しているはずがなく、優先度の低い問題として扱われていたのだと思います。&lt;/p&gt;
+&lt;p&gt;linux-2.6.32-358 : /arch/x86/kernel/tsc.c  &lt;/p&gt;
+&lt;p&gt;static void set_cyc2ns_scale(unsigned long cpu_khz, int cpu)
+{
+    unsigned long long tsc_now, ns_now, &lt;em&gt;offset;
+    unsigned long flags, &lt;/em&gt;scale;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;local_irq_save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;sched_clock_idle_sleep_event&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+&lt;span class="n"&gt;scale&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;per_cpu&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cyc2ns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cpu&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;offset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;per_cpu&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cyc2ns_offset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cpu&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="n"&gt;rdtscll&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tsc_now&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;ns_now&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;__cycles_2_ns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tsc_now&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cpu_khz&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NSEC_PER_MSEC&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;CYC2NS_SCALE_FACTOR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cpu_khz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;offset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ns_now&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tsc_now&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;CYC2NS_SCALE_FACTOR&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;sched_clock_idle_wakeup_event&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;local_irq_restore&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;しかし、時を同じくして、Intel Xeon Processor E5 Family は以下の不具合を抱えていました。本来リセットされるはずの TSC の値が、 Warm Reset (通常の再起動)時に初期化されないという不具合です。サーバの電源断を経由しない限り、 E5 Family Processor の TSC の値は保持され続けます。  &lt;/p&gt;
+&lt;p&gt;BT81. X X X No Fix TSC is Not Affected by Warm Reset&lt;br /&gt;
+&lt;a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-family-spec-update.pdf"&gt;Intel® Xeon® Processor E5 Family&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;つまり、新 208.5 日問題とは、最後に電源停止を行ってから208.5日程度経過した段階で、再起動をした際に前述の初期化処理において offset 計算が overflow することで顕在化します。旧 208.5 日問題とは異なり、稼働中の OS では発生しませんが、再起動時に突然ハング状態になるため、対策パッチをあてるか、tsc.c &amp;amp; kernel.h を自前で修正してリビルドするか、運用プロセスを一時的に変更する必要があります。kexecを行った歳も同様の問題が発生する可能性がありますので、注意しましょう。&lt;/p&gt;
+&lt;p&gt;記事に間違いや不明な点がありましたら、ご指摘下さい。&lt;/p&gt;</summary><category term="Linux"></category><category term="Bug"></category></entry><entry><title>Identity Conferene 15</title><link href="http://hisayosh.github.io/posts/2013/02/idcon-15/" rel="alternate"></link><updated>2013-02-03T19:19:00+09:00</updated><author><name>Hisayoshi Tamaki</name></author><id>tag:hisayosh.github.io,2013-02-03:posts/2013/02/idcon-15/</id><summary type="html">&lt;p&gt;Identity Conference 15(#idcon) に参加してきました。&lt;br /&gt;
  非常に勉強になったので今後も参加できればなぁと思うと同時に&lt;br /&gt;
  SSO/IDM製品の開発に携わった経験がありながら初参加という状況で少し反省。  &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://idcon.doorkeeper.jp/events/2448"&gt;#idcon 15th&lt;/a&gt;&lt;br /&gt;
