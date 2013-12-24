@@ -118,7 +118,7 @@
 <h3><strong>結論</strong></h3>
 <hr />
 <ol>
-<li>不具合対象の環境は一時的な運用の見直しが必要です。サーバ再起動は cold reboot にしましょう。</li>
+<li>不具合対象の環境は一時的な運用の見直しが必要です。サーバ再起動は cold reboot にしましょう</li>
 <li>根本解決には、対策パッチをあてるか、kernel code を修正してリビルドしたものを組み込みましょう</li>
 </ol>
 <p>※ RHEL では kernel-2.6.32-220.45.1.el6 (6.2), kernel-2.6.32-279.37.2.el6 (6.3), kernel-2.6.32-358.23.2.el6 (6.4), kernel-2.6.32-431.el6 (6.5) で修正されているようです。</p>
@@ -181,7 +181,7 @@
 <p>BT81. X X X No Fix TSC is Not Affected by Warm Reset<br />
 <a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-family-spec-update.pdf">Intel® Xeon® Processor E5 Family</a></p>
 </blockquote>
-<p>つまり、新 208.5 日問題とは、<strong>最後に電源停止を行ってから208.5日程度経過した段階で、再起動をした際に前述の初期化処理において offset 計算が overflow することで顕在化します。</strong></p>
+<p>つまり、新 208.5 日問題は、<strong>最後に電源停止を行ってから208.5日程度経過した段階で、再起動をした際に前述の初期化処理において offset 計算が overflow することで顕在化します。</strong></p>
 <p>旧 208.5 日問題とは異なり、<strong>稼働中の OS では発生しませんが、再起動時に突然ハング状態になるため、対策パッチをあてるか、tsc.c &amp; kernel.h を自前で修正してリビルドするか、運用プロセスを一時的に変更する必要があると思います。</strong>kexec時も同様の問題が起きるはずですので、ご注意ください。</p>
 <p>記事に間違いや不明な点がありましたら、ご指摘下さい。</p>
 <h3>参考URL</h3>
@@ -238,23 +238,23 @@
 
             <li class="list-group-item"><a href="../../../../tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/oauth.html">
-                        OAuth
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
                     <a href="../../../../tag/bug.html">
                         Bug
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/linux.html">
-                        Linux
+                    <a href="../../../../tag/oauth.html">
+                        OAuth
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
                     <a href="../../../../tag/openid-connect.html">
                         OpenID Connect
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/linux.html">
+                        Linux
                     </a>
                 </li>
         </ul>

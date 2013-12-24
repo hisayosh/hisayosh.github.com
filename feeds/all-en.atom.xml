@@ -18,7 +18,7 @@
 &lt;h3&gt;&lt;strong&gt;結論&lt;/strong&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
-&lt;li&gt;不具合対象の環境は一時的な運用の見直しが必要です。サーバ再起動は cold reboot にしましょう。&lt;/li&gt;
+&lt;li&gt;不具合対象の環境は一時的な運用の見直しが必要です。サーバ再起動は cold reboot にしましょう&lt;/li&gt;
 &lt;li&gt;根本解決には、対策パッチをあてるか、kernel code を修正してリビルドしたものを組み込みましょう&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;※ RHEL では kernel-2.6.32-220.45.1.el6 (6.2), kernel-2.6.32-279.37.2.el6 (6.3), kernel-2.6.32-358.23.2.el6 (6.4), kernel-2.6.32-431.el6 (6.5) で修正されているようです。&lt;/p&gt;
@@ -81,7 +81,7 @@
 &lt;p&gt;BT81. X X X No Fix TSC is Not Affected by Warm Reset&lt;br /&gt;
 &lt;a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-family-spec-update.pdf"&gt;Intel® Xeon® Processor E5 Family&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;つまり、新 208.5 日問題とは、&lt;strong&gt;最後に電源停止を行ってから208.5日程度経過した段階で、再起動をした際に前述の初期化処理において offset 計算が overflow することで顕在化します。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;つまり、新 208.5 日問題は、&lt;strong&gt;最後に電源停止を行ってから208.5日程度経過した段階で、再起動をした際に前述の初期化処理において offset 計算が overflow することで顕在化します。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;旧 208.5 日問題とは異なり、&lt;strong&gt;稼働中の OS では発生しませんが、再起動時に突然ハング状態になるため、対策パッチをあてるか、tsc.c &amp;amp; kernel.h を自前で修正してリビルドするか、運用プロセスを一時的に変更する必要があると思います。&lt;/strong&gt;kexec時も同様の問題が起きるはずですので、ご注意ください。&lt;/p&gt;
 &lt;p&gt;記事に間違いや不明な点がありましたら、ご指摘下さい。&lt;/p&gt;
 &lt;h3&gt;参考URL&lt;/h3&gt;
