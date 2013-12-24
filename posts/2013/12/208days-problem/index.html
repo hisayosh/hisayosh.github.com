@@ -91,42 +91,49 @@
 	<a href="../../../../tag/bug.html">Bug</a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>新208.5日問題 - Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</p>
-<p>Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により再度類似の不具合が発生することが分かっています。</p>
-<p>旧 208.5 日問題の発生原理に関しては以下の blog がよくまとまっています。
+                <p>Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により<strong>再度類似の不具合が発生することが分かっています。</strong></p>
+<p>旧 208.5 日問題の発生原理に関しては以下の blog が参考になります。<br />
 <a href="http://kenichiokuyama.blogspot.jp/2011/12/schedclock-overflow-after-2085-days-in.html">okkyの銀河制圧奇譚 : sched_clock() overflow after 208.5 days in Linux Kernel</a></p>
-<h3>影響範囲</h3>
-<p>旧 208.5 日問題の対策パッチがあたっている Linux Kernel であっても、本 208.5 日問題は異なるロジックにより発生するため、影響を受けます。
-Red Hat Enterprise Linux 6.2, 6.3, and 6.4 
-(kernel 2.6.32-220, 2.6.32-279, and 2.6.32-358 series)</p>
-<h3>不具合発生</h3>
+<h3><strong>影響範囲</strong></h3>
+<hr />
+<p>旧 208.5 日問題の対策パッチがあたっている Linux Kernel であっても、本 208.5 日問題は異なるロジックにより発生するため、<strong>影響を受けます。</strong></p>
+<ul>
+<li>Red Hat Enterprise Linux 6.2, 6.3, and 6.4 (kernel 2.6.32-220, 2.6.32-279, and 2.6.32-358 series)</li>
+</ul>
+<h3><strong>不具合発生条件</strong></h3>
+<hr />
 <ol>
-<li>Intel Xeon E5 シリーズのプロセッサーを利用していること</li>
-<li>上記影響範囲に記述した Linux Kernel のうち、修正パッチが当たっていないもの（これらのバージョンのうち現在稼働中の RHEL 及び RHEL 系サーバはほとんどが該当すると思います。）</li>
+<li>Intel Xeon E5 シリーズのプロセッサーを利用している</li>
+<li>上記影響範囲に記述した Linux Kernel のうち、修正パッチが当たっていない（これらのバージョンのうち現在稼働中の RHEL 及び RHEL 系サーバはほとんどが該当すると思います。）</li>
+<li>最後に cold reboot を行ってから 208.5 日以上の時間が経過している状態で、再起動を行う</li>
 </ol>
-<p>※RHEL では kernel-2.6.32-220.45.1.el6 (6.2), kernel-2.6.32-279.37.2.el6 (6.3), kernel-2.6.32-358.23.2.el6 (6.4), kernel-2.6.32-431.el6 (6.5) で修正されているようです。</p>
-<h3>結論</h3>
+<h3><strong>結論</strong></h3>
+<hr />
 <ol>
-<li>不具合対象の環境は、サーバ停止・起動に関する一時的な運用オペレーションの見直しが必要です。サーバ再起動は cold reboot にしましょう。</li>
+<li>不具合対象の環境は一時的な運用の見直しが必要です。サーバ再起動は cold reboot にしましょう。</li>
 <li>根本解決には、対策パッチをあてるか、kernel code を修正してリビルドしたものを組み込みましょう</li>
 </ol>
-<h3>不具合発生原理　旧 208.5 日問題のおさらい</h3>
-<p>旧 208.5 日問題は以下のインライン関数が原因となり発生します。CPU 内の TSC (Time Stamp Counter) の値を nano sec order の clock として利用するためのロジックです。CYCNS_SCALE_FACTOR は整数の 10 を表します。</p>
-<p CYC2NS_SCALE_FACTOR_="CYC2NS_SCALE_FACTOR;
-" _="&gt;&gt;" cpu="cpu" cpu_="cpu)" cyc="cyc" int="int" long="long" ns="ns" ns_="ns;
-" per_cpu_cyc2ns_="per_cpu(cyc2ns," per_cpu_cyc2ns_offset_="per_cpu(cyc2ns_offset," return="return" smp_processor_id_="smp_processor_id();
-" unsigned="unsigned">linux-2.6.32-220<br />
-```C:/arch/x86/include/asm/timer.h
-static inline unsigned long long __cycles_2_ns(unsigned long long cyc)</p>
-<div class="highlight"><pre><span class="err">ご覧の通り、</span><span class="n">TSC</span> <span class="err">の値を</span> <span class="n">TSC</span> <span class="o">*</span> <span class="n">SC</span> <span class="o">&gt;&gt;</span> <span class="mi">10</span> <span class="err">することで</span> <span class="mi">64</span> <span class="n">bit</span> <span class="err">変数に</span> <span class="n">nano</span> <span class="n">sec</span> <span class="err">を代入しようとしているので、</span><span class="mi">10</span> <span class="n">bit</span> <span class="n">shift</span> <span class="err">が行われる前の段階では</span> <span class="n">pico</span> <span class="n">sec</span> <span class="n">order</span> <span class="err">の演算を行うことになります。</span><span class="n">pico</span> <span class="n">sec</span> <span class="n">order</span> <span class="err">の</span> <span class="mi">1</span> <span class="err">秒を表現するためには、約</span> <span class="mi">40</span> <span class="n">bit</span> <span class="err">の空間が必要となります。変数が</span> <span class="mi">64</span> <span class="n">bit</span> <span class="err">であるため、</span> <span class="mi">1</span> <span class="err">秒以上の表現のためには残り約</span> <span class="mi">24</span> <span class="n">bit</span> <span class="err">程しかなく、</span><span class="mf">208.5</span><span class="err">日問題における</span> <span class="mf">208.5</span> <span class="err">日とは、この約</span> <span class="mi">24</span> <span class="n">bit</span> <span class="err">で表現できる日数の上限を表したものになっています。（この日数を超えると</span> <span class="n">overflow</span> <span class="err">が発生します。）</span>
+<p>※ RHEL では kernel-2.6.32-220.45.1.el6 (6.2), kernel-2.6.32-279.37.2.el6 (6.3), kernel-2.6.32-358.23.2.el6 (6.4), kernel-2.6.32-431.el6 (6.5) で修正されているようです。</p>
+<h3><strong>旧 208.5 日問題のおさらい</strong></h3>
+<hr />
+<p>旧 208.5 日問題は以下のインライン関数が原因となり発生します。CPU 内の TSC (Time Stamp Counter) の値を Linux が nano sec order の clock として利用するためのロジックです。CYCNS_SCALE_FACTOR は整数の 10 を表します。</p>
+<p>linux-2.6.32-220(/arch/x86/include/asm/timer.h)</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">__cycles_2_ns</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">cyc</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cpu</span> <span class="o">=</span> <span class="n">smp_processor_id</span><span class="p">();</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">per_cpu</span><span class="p">(</span><span class="n">cyc2ns_offset</span><span class="p">,</span> <span class="n">cpu</span><span class="p">);</span>
+    <span class="n">ns</span> <span class="o">+=</span> <span class="n">cyc</span> <span class="o">*</span> <span class="n">per_cpu</span><span class="p">(</span><span class="n">cyc2ns</span><span class="p">,</span> <span class="n">cpu</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">CYC2NS_SCALE_FACTOR</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ns</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 
-<span class="cp">### 不具合発生原理　新 208.5 日問題の解説</span>
 
-<span class="n">Linux</span> <span class="n">Kernel</span> <span class="err">を起動する際、各種初期化処理を行う</span> <span class="n">start_kernel</span><span class="p">()</span><span class="err">内</span> <span class="err">で</span> <span class="n">x86_late_time_init</span><span class="p">()</span> <span class="err">という関数が呼び出されます。</span>
-
-<span class="n">linux</span><span class="o">-</span><span class="mf">2.6.32.358</span>  
-<span class="err">```</span><span class="n">C</span><span class="o">:/</span><span class="n">arch</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">time</span><span class="p">.</span><span class="n">c</span>
-<span class="k">static</span> <span class="n">__init</span> <span class="kt">void</span> <span class="n">x86_late_time_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<p>ご覧の通り、TSC の値を TSC * SC &gt;&gt; 10 することで 64 bit 変数に nano sec を代入しようとしているので、10 bit shift が行われる前の段階では pico sec order の演算を行うことになります。pico sec order の 1 秒を表現するためには、約 40 bit の空間が必要となります。変数が 64 bit であるため、 1 秒以上の表現のためには残り約 24 bit 程しかなく、208.5日問題における 208.5 日とは、この約 24 bit で表現できる日数の上限を表したものになっています。（この日数を超えると overflow が発生します。）</p>
+<h3><strong>新 208.5 日問題の解説</strong></h3>
+<hr />
+<p>Linux Kernel を起動する際、各種初期化処理を行う start_kernel()内 で x86_late_time_init() という関数が呼び出されます。</p>
+<p>linux-2.6.32.358(/arch/x86/kernel/time.c)</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="n">__init</span> <span class="kt">void</span> <span class="nf">x86_late_time_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">x86_init</span><span class="p">.</span><span class="n">timers</span><span class="p">.</span><span class="n">timer_init</span><span class="p">();</span>
     <span class="n">tsc_init</span><span class="p">();</span>
@@ -134,39 +141,46 @@ static inline unsigned long long __cycles_2_ns(unsigned long long cyc)</p>
 </pre></div>
 
 
-<p>このうち、tsc_init() の中で、cyc2ns_offset の初期化を行います。この初期化処理は、旧 208.5 日問題と同一のロジックを経由します。しかし、Linux の起動時には、 CPU の仕様として TSC がリセットされるはずであり、Linux 起動プロセスの初期段階である本関数がコールされる時点で TSC が 208.5 日に到達しているはずがなく、優先度の低い問題として扱われていたのだと思います。</p>
-<p>linux-2.6.32-358<br />
-```C:/arch/x86/kernel/tsc.c
-static void set_cyc2ns_scale(unsigned long cpu_khz, int cpu)
-{
-    unsigned long long tsc_now, ns_now, <em>offset;
-    unsigned long flags, </em>scale;</p>
-<div class="highlight"><pre><span class="n">local_irq_save</span><span class="p">(</span><span class="n">flags</span><span class="p">);</span>
-<span class="n">sched_clock_idle_sleep_event</span><span class="p">();</span>
+<p>このうち、tsc_init() の中で、cyc2ns_offset の初期化を行います。この初期化処理は、旧 208.5 日問題と同一のロジックを経由します。Linux の起動時には、 CPU の仕様として TSC がリセットされるはずであり、Linux 起動プロセスの初期段階である本関数がコールされる時点で TSC が 208.5 日に到達しているはずがなく、優先度の低い問題として扱われていたのだと思います。</p>
+<p>linux-2.6.32-358(/arch/x86/kernel/tsc.c)</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">set_cyc2ns_scale</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">cpu_khz</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cpu</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">tsc_now</span><span class="p">,</span> <span class="n">ns_now</span><span class="p">,</span> <span class="o">*</span><span class="n">offset</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">flags</span><span class="p">,</span> <span class="o">*</span><span class="n">scale</span><span class="p">;</span>
 
-<span class="n">scale</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per_cpu</span><span class="p">(</span><span class="n">cyc2ns</span><span class="p">,</span> <span class="n">cpu</span><span class="p">);</span>
-<span class="n">offset</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per_cpu</span><span class="p">(</span><span class="n">cyc2ns_offset</span><span class="p">,</span> <span class="n">cpu</span><span class="p">);</span>
+    <span class="n">local_irq_save</span><span class="p">(</span><span class="n">flags</span><span class="p">);</span>
+    <span class="n">sched_clock_idle_sleep_event</span><span class="p">();</span>
 
-<span class="n">rdtscll</span><span class="p">(</span><span class="n">tsc_now</span><span class="p">);</span>
-<span class="n">ns_now</span> <span class="o">=</span> <span class="n">__cycles_2_ns</span><span class="p">(</span><span class="n">tsc_now</span><span class="p">);</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per_cpu</span><span class="p">(</span><span class="n">cyc2ns</span><span class="p">,</span> <span class="n">cpu</span><span class="p">);</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">per_cpu</span><span class="p">(</span><span class="n">cyc2ns_offset</span><span class="p">,</span> <span class="n">cpu</span><span class="p">);</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="n">cpu_khz</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">*</span><span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSEC_PER_MSEC</span> <span class="o">&lt;&lt;</span> <span class="n">CYC2NS_SCALE_FACTOR</span><span class="p">)</span><span class="o">/</span><span class="n">cpu_khz</span><span class="p">;</span>
-    <span class="o">*</span><span class="n">offset</span> <span class="o">=</span> <span class="n">ns_now</span> <span class="o">-</span> <span class="p">(</span><span class="n">tsc_now</span> <span class="o">*</span> <span class="o">*</span><span class="n">scale</span> <span class="o">&gt;&gt;</span> <span class="n">CYC2NS_SCALE_FACTOR</span><span class="p">);</span>
+    <span class="n">rdtscll</span><span class="p">(</span><span class="n">tsc_now</span><span class="p">);</span>
+    <span class="n">ns_now</span> <span class="o">=</span> <span class="n">__cycles_2_ns</span><span class="p">(</span><span class="n">tsc_now</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">cpu_khz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSEC_PER_MSEC</span> <span class="o">&lt;&lt;</span> <span class="n">CYC2NS_SCALE_FACTOR</span><span class="p">)</span><span class="o">/</span><span class="n">cpu_khz</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">offset</span> <span class="o">=</span> <span class="n">ns_now</span> <span class="o">-</span> <span class="p">(</span><span class="n">tsc_now</span> <span class="o">*</span> <span class="o">*</span><span class="n">scale</span> <span class="o">&gt;&gt;</span> <span class="n">CYC2NS_SCALE_FACTOR</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">sched_clock_idle_wakeup_event</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">local_irq_restore</span><span class="p">(</span><span class="n">flags</span><span class="p">);</span>
 <span class="p">}</span>
-
-<span class="n">sched_clock_idle_wakeup_event</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="n">local_irq_restore</span><span class="p">(</span><span class="n">flags</span><span class="p">);</span>
 </pre></div>
 
 
-<p>}
-```</p>
 <p>しかし、時を同じくして、Intel Xeon Processor E5 Family は以下の不具合を抱えていました。本来リセットされるはずの TSC の値が、 Warm Reset (通常の再起動)時に初期化されないという不具合です。サーバの電源断を経由しない限り、 E5 Family Processor の TSC の値は保持され続けます。</p>
-<p>BT81. X X X No Fix TSC is Not Affected by Warm Reset
+<blockquote>
+<p>BT81. X X X No Fix TSC is Not Affected by Warm Reset<br />
 <a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-family-spec-update.pdf">Intel® Xeon® Processor E5 Family</a></p>
-<p>つまり、新 208.5 日問題とは、最後に電源停止を行ってから208.5日程度経過した段階で、再起動をした際に前述の初期化処理において offset 計算が overflow することで顕在化します。旧 208.5 日問題とは異なり、稼働中の OS では発生しませんが、再起動時に突然ハング状態になるため、対策パッチをあてるか、tsc.c &amp; kernel.h を自前で修正してリビルドするか、運用プロセスを一時的に変更する必要があると思います。</p>
+</blockquote>
+<p>つまり、新 208.5 日問題とは、<strong>最後に電源停止を行ってから208.5日程度経過した段階で、再起動をした際に前述の初期化処理において offset 計算が overflow することで顕在化します。</strong></p>
+<p>旧 208.5 日問題とは異なり、<strong>稼働中の OS では発生しませんが、再起動時に突然ハング状態になるため、対策パッチをあてるか、tsc.c &amp; kernel.h を自前で修正してリビルドするか、運用プロセスを一時的に変更する必要があると思います。</strong>kexec時も同様の問題が起きるはずですので、ご注意ください。</p>
 <p>記事に間違いや不明な点がありましたら、ご指摘下さい。</p>
+<h3>参考URL</h3>
+<ul>
+<li><a href="https://access.redhat.com/site/solutions/433883">Red Hat : Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</a>  </li>
+<li><a href="http://kernel.opensuse.org/cgit/kernel/commit/?id=9993bc635d01a6ee7f6b833b4ee65ce7c06350b1">OpenSUSE : sched/x86: Fix overflow in cyc2ns_offset</a></li>
+</ul>
             </div>
             <!-- /.entry-content -->
     <hr />
@@ -216,6 +230,11 @@ static void set_cyc2ns_scale(unsigned long cpu_khz, int cpu)
 
             <li class="list-group-item"><a href="../../../../tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
                 <li class="list-group-item tag-4">
+                    <a href="../../../../tag/bug.html">
+                        Bug
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
                     <a href="../../../../tag/linux.html">
                         Linux
                     </a>
@@ -228,11 +247,6 @@ static void set_cyc2ns_scale(unsigned long cpu_khz, int cpu)
                 <li class="list-group-item tag-4">
                     <a href="../../../../tag/openid-connect.html">
                         OpenID Connect
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="../../../../tag/bug.html">
-                        Bug
                     </a>
                 </li>
         </ul>
