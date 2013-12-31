@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hisayosh-&gt;blog</title><link>http://hisayosh.github.io/</link><description></description><atom:link href="http://hisayosh.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 24 Dec 2013 12:25:00 +0900</lastBuildDate><item><title>新208.5日問題 - Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</title><link>http://hisayosh.github.io/posts/2013/12/208days-problem/</link><description>&lt;p&gt;Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により&lt;strong&gt;再度類似の不具合が発生することが分かっています。&lt;/strong&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hisayosh-&gt;blog</title><link>http://hisayosh.github.io/</link><description></description><atom:link href="http://hisayosh.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 31 Dec 2013 12:00:00 +0900</lastBuildDate><item><title>tsc_checker - 新208.5日問題簡易チェックツール</title><link>http://hisayosh.github.io/posts/2013/12/tsc_checker/</link><description>&lt;p&gt;以前情報公開した&lt;a href="http://hisayosh.github.io/posts/2013/12/208days-problem/"&gt;新 208.5 日問題&lt;/a&gt;向けに、現在の TSC 値や numeric overflow 警告を行うツールを作成しました。GCC Inline Assembler を含め Linux Kernel 内の新 208.5 日問題ロジックとほぼ同等の処理を行います。&lt;a href="http://hisayosh.github.io/posts/2013/12/208days-problem/"&gt;記事&lt;/a&gt;にも書きましたが、&lt;strong&gt;本問題は旧 208.5 日問題とは異なり、 uptime 結果を確認することによって問題の有無を判断することが出来ません。再起動を行っても TSC 値がリセットされないことが問題の発生要因であるためです。ご注意ください。&lt;/strong&gt;&lt;a href="#1"&gt;*1&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;目的&lt;/strong&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+&lt;li&gt;従来のオペレーション（再起動）による TSC 値の蓄積状況を確認する&lt;/li&gt;
+&lt;li&gt;仮の CPU クロック周波数を基に現在の numeric overflow の発生可能性を定量的に確認する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong&gt;出力内容&lt;/strong&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+&lt;li&gt;現在の CPU 内の TSC 値&lt;/li&gt;
+&lt;li&gt;引数で取得した CPU クロック周波数を元に算出した SC 値&lt;/li&gt;
+&lt;li&gt;不具合を伴うロジックにより発生する pico sec order の 64 bit 変数値&lt;/li&gt;
+&lt;li&gt;64 bit 変数の上限値&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong&gt;利用方法&lt;/strong&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;tsc_checker の実行に必要な要素は、tsc_checker 実行環境の CPU クロック周波数のみです。以下の 2 ステップで実行します。&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;1. tsc_checker 実行サーバの CPU クロック周波数の取得&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Intel Xeon E5 プロセッサーファミリーであれば、tsc_constant により TSC は CPU クロック周波数の動的変動の影響を受けません。コマンドラインから以下のコマンドを実行して該当 CPU の最大クロック周波数を取得します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;&lt;strong&gt;2. tsc_checker の実行&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;tsc_checkerを実行します。「-f」オプションの引数として「1.」で取得したクロック周波数を指定します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;./tsc_checker -f 2794000
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;計算結果 : 通常時&lt;/strong&gt;&lt;a href="#2"&gt;*2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;TSC&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;        &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1476354219900&lt;/span&gt;
+&lt;span class="n"&gt;SC&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;         &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;366&lt;/span&gt;
+&lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;    &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;540345644483400&lt;/span&gt;
+&lt;span class="n"&gt;threashold&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18446744073709551615&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;計算結果 : numeric overflow 発生時&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;TSC&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;        &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;295504282125&lt;/span&gt;
+&lt;span class="n"&gt;SC&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;         &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;366&lt;/span&gt;
+&lt;span class="o"&gt;***&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="o"&gt;***&lt;/span&gt;
+&lt;span class="n"&gt;there&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;possibility&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;numeric&lt;/span&gt; &lt;span class="n"&gt;overflow&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;next&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;startup&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;have&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;taken&lt;/span&gt; &lt;span class="n"&gt;measure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;strong&gt;tsc_checker の仕組み&lt;/strong&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;仕組みは単純です。まず、 TSC 値を Inline Assembler により取得します。具体的には、CPU に対し rdtsc ( read time stamp counter ) 命令を実行し、結果の上位 32 bit を EDX register、下位 32 bit を EAX register 経由で、それぞれ uint32_t 型の変数に格納します。そして「32 bit 左に shift した上位 bit 変数」と「下位 bit 変数」を OR 演算することで、uint64_t 型の変数にTSC 値を格納します。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;uint64_t&lt;/span&gt; &lt;span class="nf"&gt;get_tsc&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+
+    &lt;span class="kt"&gt;uint64_t&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;uint32_t&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;high&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;asm&lt;/span&gt; &lt;span class="k"&gt;volatile&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rdtsc&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;=a&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;=d&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;high&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+    &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;uint64_t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;low&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;uint64_t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;high&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;次に、SC ( SCale ) の算出を行います。こちらも Linux Kernel と同一のロジックになっています。1000000 &lt;a href="#3"&gt;*3&lt;/a&gt; に対して 10 bit &lt;a href="#4"&gt;*4&lt;/a&gt; 分の左 shift を行った数値をキロヘルツ単位のクロック周波数で除算することで SC を算出します。最後行の tsc * scale が numeric overflow 発生原因となる演算です。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;tsc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_tsc&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;scale&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1000000&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;CYC2NS_SCALE_FACTOR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;cpu_khz&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tsc&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考までに、Linux Kernel では以下のマクロ演算で tsc * scale の計算を行うことにより numeric overflow の発生を抑止しています。tsc_checker の &lt;a href="https://github.com/hisayosh/tsc_checker/blob/master/tsc_checker.h"&gt;header file&lt;/a&gt; にマクロを追加していますので興味のある方はどうぞ。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/* from linux kernel (/include/linux/kernel.h b/include/linux/kernel.h)&lt;/span&gt;
+&lt;span class="cm"&gt; * Multiplies an integer by a fraction, while avoiding unnecessary&lt;/span&gt;
+&lt;span class="cm"&gt; * overflow or loss of precision.&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="cp"&gt;#define mult_frac(x, numer, denom)(                        \&lt;/span&gt;
+&lt;span class="cp"&gt;{                                                          \&lt;/span&gt;
+&lt;span class="cp"&gt;    typeof(x) quot = (x) / (denom);                        \&lt;/span&gt;
+&lt;span class="cp"&gt;    typeof(x) rem  = (x) % (denom);                        \&lt;/span&gt;
+&lt;span class="cp"&gt;    (quot * (numer)) + ((rem * (numer)) / (denom));        \&lt;/span&gt;
+&lt;span class="cp"&gt;}                                                          \&lt;/span&gt;
+&lt;span class="cp"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;tsc_checker 内でも以下のコードにより動作します。（91行目のコメントアウトを参照）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mult_frac&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tsc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1UL&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;CYC2NS_SCALE_FACTOR&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a name="1"&gt;&lt;/a&gt; *1 : はてブや Twitter で誤解されている方がいらっしゃったので念の為にフォローします&lt;br /&gt;
+&lt;a name="2"&gt;&lt;/a&gt; *2 : TSC は常に増加し続けるため、本ツール実行により numeric overflow が発生しない場合にも問題が発生する可能性があります。あくまで TSC 蓄積値の確認や現在の演算結果の目安を確認するツールとしてご利用ください&lt;br /&gt;
+&lt;a name="3"&gt;&lt;/a&gt; *3 : nano sec per micro sec 値&lt;br /&gt;
+&lt;a name="4"&gt;&lt;/a&gt; *4 : scale factor 値&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Hisayoshi Tamaki</dc:creator><pubDate>Tue, 31 Dec 2013 12:00:00 +0900</pubDate><guid>tag:hisayosh.github.io,2013-12-31:posts/2013/12/tsc_checker/</guid><category>Linux</category><category>Tool</category></item><item><title>新208.5日問題 - Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</title><link>http://hisayosh.github.io/posts/2013/12/208days-problem/</link><description>&lt;p&gt;Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により&lt;strong&gt;再度類似の不具合が発生することが分かっています。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;旧 208.5 日問題の発生原理に関しては以下の blog が参考になります。&lt;br /&gt;
 &lt;a href="http://kenichiokuyama.blogspot.jp/2011/12/schedclock-overflow-after-2085-days-in.html"&gt;okkyの銀河制圧奇譚 : sched_clock() overflow after 208.5 days in Linux Kernel&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;影響範囲&lt;/strong&gt;&lt;/h3&gt;

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hisayosh-&gt;blog</title><link>http://hisayosh.github.io/</link><description></description><atom:link href="http://hisayosh.github.io/feeds/30.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 02 Mar 2012 14:01:01 +0900</lastBuildDate><item><title>tsc_checker.html</title><link>http://hisayosh.github.io/posts/2012/03/tsc_checkerhtml/</link><description>
+
+&lt;p&gt;Title: tsc&lt;em&gt;checker -  208.5 &lt;br /&gt;
+Slug: tsc&lt;/em&gt;checker
+Date: 2013-12-28 01:25
+Category: Linux
+Tags: Linux, Tool
+Author: Hisayoshi Tamaki
+Summary:   208.5                &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;     [  208.5    ](http://hisayosh.github.io/posts/2013/12/208days-problem/)        TSC    numeric overflow                 C          GCC Inline Assembler     Linux Kernel     208.5                      [  ](http://hisayosh.github.io/posts/2013/12/208days-problem/)         **      208.5           uptime                                          TSC                                     **[*1](#1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;&lt;em&gt;*  *&lt;/em&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TSC            &lt;/li&gt;
+&lt;li&gt;CPU               numeric overflow                &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;em&gt;*    *&lt;/em&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU    TSC  &lt;/li&gt;
+&lt;li&gt;CPU                SC  &lt;/li&gt;
+&lt;li&gt;pico sec order   64 bit    &lt;/li&gt;
+&lt;li&gt;64 bit       &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;### &lt;em&gt;*    *&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;tsc&lt;em&gt;checker            tsc&lt;/em&gt;checker       CPU                 2             &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Intel Xeon E5                 tsc_constant     TSC   CPU                                                  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;tsc_checker    &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;
+$ ./tsc_checker -f 2794000
+TSC value        : 1476354219900
+SC value         : 366
+current value    : 540345644483400
+threashold value : 18446744073709551615
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;### &lt;em&gt;*   *&lt;/em&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;             TSC     Inline Assembler                 rdtsc ( read time stamp counter )              32 bit   EDX register    32 bit   EAX register          uint32_t               uint64_t        32 bit    shift      bit         bit      OR             TSC
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;```c
+uint64&lt;em&gt;t get&lt;/em&gt;tsc(){&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;uint64_t val;
+uint32_t low, high;
+
+asm volatile ("rdtsc" : "=a" (low), "=d" (high));
+val = (uint64_t)low | ((uint64_t)high &amp;lt;&amp;lt; 32);
+
+return val;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+```&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SC ( SCale )               Linux Kernel                1000000 [*2](#2)      10 bit [*3](#3)     shift                                SC             tsc * scale   numeric overflow
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;c
+    tsc = get_tsc();
+    scale = (1000000 &amp;lt;&amp;lt; CYC2NS_SCALE_FACTOR) / cpu_khz;
+    current = tsc * scale;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   Linux Kernel    tsc * scale                        numeric overflow             tsc_checker   [header file](https://github.com/hisayosh/tsc_checker/blob/master/tsc_checker.h)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;```c
+/* from linux kernel (/include/linux/kernel.h b/include/linux/kernel.h)
+ * Multiplies an integer by a fraction, while avoiding unnecessary
+ * overflow or loss of precision.
+ */&lt;/p&gt;
+
+&lt;h1&gt;define mult_frac(x, numer, denom)(                        \&lt;/h1&gt;
+
+&lt;p&gt;{                                                          \
+    typeof(x) quot = (x) / (denom);                        \
+    typeof(x) rem  = (x) % (denom);                        \
+    (quot * (numer)) + ((rem * (numer)) / (denom));        \
+}                                                          \
+)
+```&lt;/p&gt;
+
+&lt;p&gt;tsc_checker                    91 &lt;br /&gt;
+&lt;code&gt;c
+    current = mult_frac(tsc, scale, (1UL &amp;lt;&amp;lt; CYC2NS_SCALE_FACTOR));
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name="1"&gt;&lt;/a&gt;      Twitter                               &lt;/p&gt;
+
+&lt;p&gt;&lt;a name="2"&gt;&lt;/a&gt; nano sec per micro sec  &lt;/p&gt;
+
+&lt;p&gt;&lt;a name="3"&gt;&lt;/a&gt; scale factor  &lt;/p&gt;
+
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">hisayosh</dc:creator><pubDate>Fri, 02 Mar 2012 14:01:01 +0900</pubDate><guid>tag:hisayosh.github.io,2012-03-02:posts/2012/03/tsc_checkerhtml/</guid></item></channel></rss>
