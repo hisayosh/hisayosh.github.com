@@ -94,7 +94,7 @@
 
 &lt;h1&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;a name="1"&gt;&lt;/a&gt; *1 : はてブや Twitter で誤解されている方がいらっしゃったので念の為にフォローします&lt;br /&gt;
-&lt;a name="2"&gt;&lt;/a&gt; *2 : TSC は常に増加し続けるため、本ツール実行により numeric overflow が発生しない場合にも問題が発生する可能性があります。あくまで TSC 蓄積値の確認や現在の演算結果の目安を確認するツールとしてご利用ください&lt;br /&gt;
+&lt;a name="2"&gt;&lt;/a&gt; *2 : TSC は常に増加し続けるため、本ツール実行時点で numeric overflow が発生しない場合も、その後の再起動時に問題が発生する可能性があります。あくまで TSC 蓄積値の確認や現在の演算結果の目安を確認するツールとしてご利用ください&lt;br /&gt;
 &lt;a name="3"&gt;&lt;/a&gt; *3 : nano sec per micro sec 値&lt;br /&gt;
 &lt;a name="4"&gt;&lt;/a&gt; *4 : scale factor 値&lt;/p&gt;</summary><category term="Linux"></category><category term="Tool"></category></entry><entry><title>新208.5日問題 - Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</title><link href="http://hisayosh.github.io/posts/2013/12/208days-problem/" rel="alternate"></link><updated>2013-12-24T12:25:00+09:00</updated><author><name>Hisayoshi Tamaki</name></author><id>tag:hisayosh.github.io,2013-12-24:posts/2013/12/208days-problem/</id><summary type="html">&lt;p&gt;Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により&lt;strong&gt;再度類似の不具合が発生することが分かっています。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;旧 208.5 日問題の発生原理に関しては以下の blog が参考になります。&lt;br /&gt;
