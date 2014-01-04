@@ -187,7 +187,10 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://access.redhat.com/site/solutions/433883"&gt;Red Hat : Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6&lt;/a&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;a href="http://kernel.opensuse.org/cgit/kernel/commit/?id=9993bc635d01a6ee7f6b833b4ee65ce7c06350b1"&gt;OpenSUSE : sched/x86: Fix overflow in cyc2ns_offset&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Hisayoshi Tamaki</dc:creator><pubDate>Tue, 24 Dec 2013 12:25:00 +0900</pubDate><guid>tag:hisayosh.github.io,2013-12-24:posts/2013/12/208days-problem/</guid><category>Linux</category><category>Bug</category></item><item><title>Identity Conferene 15</title><link>http://hisayosh.github.io/posts/2013/02/idcon-15/</link><description>&lt;p&gt;Identity Conference 15(#idcon) に参加してきました。&lt;br /&gt;
+&lt;/ul&gt;
+&lt;h3&gt;追記(2014/1/4)&lt;/h3&gt;
+&lt;p&gt;新208.5日問題の簡易チェックツールを作成しました。よろしければお使い下さい。
+&lt;a href="http://hisayosh.github.io/posts/2013/12/tsc_checker/"&gt;tsc_checker - 新208.5日問題簡易チェックツール&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Hisayoshi Tamaki</dc:creator><pubDate>Tue, 24 Dec 2013 12:25:00 +0900</pubDate><guid>tag:hisayosh.github.io,2013-12-24:posts/2013/12/208days-problem/</guid><category>Linux</category><category>Bug</category></item><item><title>Identity Conferene 15</title><link>http://hisayosh.github.io/posts/2013/02/idcon-15/</link><description>&lt;p&gt;Identity Conference 15(#idcon) に参加してきました。&lt;br /&gt;
  非常に勉強になったので今後も参加できればなぁと思うと同時に&lt;br /&gt;
  SSO/IDM製品の開発に携わった経験がありながら初参加という状況で少し反省。  &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://idcon.doorkeeper.jp/events/2448"&gt;#idcon 15th&lt;/a&gt;&lt;br /&gt;
