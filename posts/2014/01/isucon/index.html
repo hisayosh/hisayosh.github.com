@@ -115,7 +115,7 @@
 <p>しかし本戦は 5 台のサーバを利用した分散システムです。従って、システム全体で最適なパフォーマンスを発揮するためのアーキテクチャ検討の重要性がより高くなり、垂直方向にアプリケーションのみを高速化するメリットが相対的に小さくなります。<a href="*3">#3</a>   </p>
 <p>結果論にはなりますが、もう少し丁寧に戦略を練っていれば事前に検討できたことだと思います。isucon 対策合宿や isucon hackathon 等を含め、今まで単一マシンのみで対策・検討してきたことが、想像力や思考を曇らせたことに寄与していると思います。</p>
 <p>当日レギュレーションが発表された段階で、おおよそ mod_isucon で対応していては間に合わない上に性能向上のアプローチとして間違っていることが判明し、チームで方針を決定する上で冷静さに悪影響が出たかなと思います。  </p>
-<h3><strong>敗因 2 : </strong></h3>
+<h3><strong>敗因 2 : 当日の戦略ミス</strong></h3>
 <hr />
 <p>第二の敗因は、@sechiro が <a href="http://sechiro.hatenablog.com/entry/2013/12/17/%E4%BB%8A%E6%9B%B4%E3%81%AA%E3%81%8C%E3%82%89%E3%81%AE_%23isucon_3_%E5%8F%82%E5%8A%A0%E5%A0%B1%E5%91%8A%EF%BC%9A%E3%80%8Cisucon%E3%81%AB%E5%8B%9D%E3%81%A6%E3%82%8B%E9%8A%80%E3%81%AE%E5%BC%BE%E4%B8%B8">blog</a> で「制限事項の理解と適切なアーキテクチャの選定ミス」という形でまとめてくれている部分ではあるのですが、自分の言葉でも書いておきたいと思います。isucon 本戦の競技時間は 7 時間しかありません。「時間」や「チームの能力」という限られた資源やレギュレーションから発生し得るボトルネック考察をもとに、実装できる最善の設計を可能な限り早く見極め、ひとつひとつ丁寧に実装していくことが大切です。しかし、当日はこの認識が不足していました。  </p>
 <p>レギュレーションの意識という観点では、勝浦タンタンメンでも、構成上 I/O bound になる設問であると当然早期に判断してはいました。しかし、フロントの帯域がサーバ一台あたり100 Mbps(12.5 MByte per sec) に制限されているという重要な前提を軽視したことにより、具体的な実装に落としこんでいく上で最も重要である「いかにフロントのネットワーク帯域を使い潰すか」という視点を失うことになりました。  </p>
@@ -183,8 +183,13 @@
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/tool.html">
-                        Tool
+                    <a href="../../../../tag/bug.html">
+                        Bug
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/openid-connect.html">
+                        OpenID Connect
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
@@ -193,18 +198,13 @@
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/bug.html">
-                        Bug
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
                     <a href="../../../../tag/isucon.html">
                         isucon
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/openid-connect.html">
-                        OpenID Connect
+                    <a href="../../../../tag/tool.html">
+                        Tool
                     </a>
                 </li>
         </ul>
