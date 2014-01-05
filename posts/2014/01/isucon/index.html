@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>今更ながらの #isucon 3 参加報告 Part 2</title>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-37369984-2', 'hisayosh.github.io');
+        ga('send', 'pageview');
+    </script>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="今更ながらの #isucon 3 参加報告 Part 2"/>
+            <meta property="og:url" content="../../../../posts/2014/01/isucon/"/>
+            <meta property="og:description" content="isucon 3 ( Iikanji Speed-up Contest 3 ) 参加記録"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../../theme/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="../../../../theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="//code.jquery.com/jquery.min.js"></script>
+
+        <link href="../../../../feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="hisayosh->blog ATOM Feed"/>
+        <link href="../../../../feeds/all.rss.xml" type="application/atom+xml" rel="alternate"
+              title="hisayosh->blog RSS Feed"/>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../../.." class="navbar-brand">hisayosh->blog</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="../../../../category/linux.html">Linux</a>
+                        </li>
+                        <li class="active">
+                            <a href="../../../../category/isucon.html">isucon</a>
+                        </li>
+                        <li >
+                            <a href="../../../../category/identity.html">Identity</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../../../archives.html"><i class="icon-th-list"></i>Archives</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- /.navbar -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="../../../../posts/2014/01/isucon/"
+                       rel="bookmark"
+                       title="Permalink to 今更ながらの #isucon 3 参加報告 Part 2">
+                        今更ながらの #isucon 3 参加報告 Part 2
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="icon-calendar"></i>Sun 05 January 2014
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="../../../../tag/isucon.html">isucon</a>
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h3><strong>はじめに</strong></h3>
+<hr />
+<p>あけましておめでとうございます。2013年に開催された<a href="http://isucon.net/">isucon 3</a>の参加報告です。本blogのフレームワークを<a href="http://octopress.org/">Octopress</a>から<a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a>に移行する等していたため開催から2ヶ月遅れの更新となりました。...年越してしまっていますね。  </p>
+<p>さて本題です。  </p>
+<p>2011 年度、2012 年度の isucon は本戦のみの一発勝負であるのに対し 2013 年度は Amazon EC2 を利用したリモート参加者によるオンライン予選と渋谷ヒカリエの LINE 本社で開催される本戦の二部構成となっています。   </p>
+<p>我々勝浦タンタンメンチームは予選は運良く 1 位通過できたものの本戦は Fail しスコア無しという惨敗結果に終わりました。チームの方針や反省点に関してはチームメンバーの<a href="https://twitter.com/sechiro">@sechiro</a>、<a href="https://twitter.com/qtakamitsu">@qtakamitsu</a>が詳細な blog<a href="#1">*1</a> を書いてくれているので、来年の isucon に今回の反省を活かすためにも自分なりの視点で備忘録を書きたいと思います。   </p>
+<p>根本的に実力が不足していたことは間違いないですが、限られた力量の中で最善を尽くせたかというと、残念ながら良くない方向に振れてしまったかなと思います。「では技術面以外で不足していた点は何か？」という視点で敗因を書いていきたいと思います。    </p>
+<h3><strong>敗因1 : Technology Driven</strong></h3>
+<hr />
+<p>第一の敗因は、本戦で使う技術・方向性をお題が出る前から固めたことだと考えています。本戦でどのような特性のアプリケーション・レギュレーションになるか分からないという不確定要素がある状況で、事前に技術の方向性を決定することは、勝負の結果を運任せにすることとほぼ同義になります。  </p>
+<p>C コーダーの多い勝浦タンタンメンの場合は、それなりに書き慣れている Apache Module(mod_isucon) を準備し、本戦ではお題目アプリを一気にポーティングしベストスコアを指すという事前方針でした。<a href="#2">*2</a>   </p>
+<p>予選のように単一マシンで縦方向の最適化が勝負の決め手になる場合はコンピュータの資源が限られている上に、複数マシン間における一貫性や同期等を考慮する必要がないためアプリケーションスタックはある程度限定される傾向にあります。そのような前提条件においては、お題目アプリケーションのネイティブアプリケーションへのポーティング &amp; チューニングは、CPU bound である場合に LL 系言語と実行速度の差別化を図るという観点で有効に作用する可能性が相応にあります。  </p>
+<p>しかし本戦は 5 台のサーバを利用した分散システムです。従って、システム全体で最適なパフォーマンスを発揮するためのアーキテクチャ検討の重要性がより高くなり、垂直方向にアプリケーションのみを高速化するメリットが相対的に小さくなります。<a href="*3">#3</a>   </p>
+<p>結果論にはなりますが、もう少し丁寧に戦略を練っていれば事前に検討できたことだと思います。isucon 対策合宿や isucon hackathon 等を含め、今まで単一マシンのみで対策・検討してきたことが、想像力や思考を曇らせたことに寄与していると思います。</p>
+<p>当日レギュレーションが発表された段階で、おおよそ mod_isucon で対応していては間に合わない上に性能向上のアプローチとして間違っていることが判明し、チームで方針を決定する上で冷静さに悪影響が出たかなと思います。  </p>
+<h3><strong>敗因 2 : </strong></h3>
+<hr />
+<p>第二の敗因は、@sechiro が <a href="http://sechiro.hatenablog.com/entry/2013/12/17/%E4%BB%8A%E6%9B%B4%E3%81%AA%E3%81%8C%E3%82%89%E3%81%AE_%23isucon_3_%E5%8F%82%E5%8A%A0%E5%A0%B1%E5%91%8A%EF%BC%9A%E3%80%8Cisucon%E3%81%AB%E5%8B%9D%E3%81%A6%E3%82%8B%E9%8A%80%E3%81%AE%E5%BC%BE%E4%B8%B8">blog</a> で「制限事項の理解と適切なアーキテクチャの選定ミス」という形でまとめてくれている部分ではあるのですが、自分の言葉でも書いておきたいと思います。isucon 本戦の競技時間は 7 時間しかありません。「時間」や「チームの能力」という限られた資源やレギュレーションから発生し得るボトルネック考察をもとに、実装できる最善の設計を可能な限り早く見極め、ひとつひとつ丁寧に実装していくことが大切です。しかし、当日はこの認識が不足していました。  </p>
+<p>レギュレーションの意識という観点では、勝浦タンタンメンでも、構成上 I/O bound になる設問であると当然早期に判断してはいました。しかし、フロントの帯域がサーバ一台あたり100 Mbps(12.5 MByte per sec) に制限されているという重要な前提を軽視したことにより、具体的な実装に落としこんでいく上で最も重要である「いかにフロントのネットワーク帯域を使い潰すか」という視点を失うことになりました。  </p>
+<p>また、時間や能力等を元に実現可能なアーキテクチャを検討するという観点では、時間的・能力的に制限時間に間に合わないリスクを伴う理想的な実装を追い求めた結果、最終計測に間に合わずに Fail するという結果になりました。チームメンバーは普段異なる会社で働き、肩を並べてコーディングした時間が少ないという点も影響したとは思います。しかし、それは最初から分かっていることなので、事前にもう少し踏み込んで、各個人ができること・できないことを共有し、戦略策定時に参考にする必要があったかなと反省しています。   </p>
+<p>isucon 予選のレギュレーションは Fail に対する罰則も軽く、ある程度は力技で通せる面もありましたが、本戦では Fail=即死 ですので一つでも問題があると命取りになります。チーム内の協調力や検討力、システムの安定性をより強く問う良問だったと思います。  </p>
+<h3><strong>最後に</strong></h3>
+<hr />
+<p>isucon 3 を通じて技術的に大変多くのことを学ばせて頂きましたし、上記のような異種混合チームで極めて限られた時間の中で物事を進めていく際の難しさについても学ばせて頂きました。主催者チームの方、スポンサー企業様、関係者の皆様には深く感謝しています。  </p>
+<p>最後に、isucon への当事者としての参加は、チームの中で切磋琢磨できるだけではなく、他チームの技術的・戦略的な問題解決方法を自ずと深く勉強することになり、非常に得るものが多いです。次回以降どのような形式で開催頂けるのか分かりませんが、 isucon 3 に参加しなかったエンジニアの方々には次回への参加を強くオススメします。  </p>
+<p><a name="1"></a> *1 : <a href="http://sechiro.hatenablog.com/entry/2013/12/17/%E4%BB%8A%E6%9B%B4%E3%81%AA%E3%81%8C%E3%82%89%E3%81%AE_%23isucon_3_%E5%8F%82%E5%8A%A0%E5%A0%B1%E5%91%8A%EF%BC%9A%E3%80%8Cisucon%E3%81%AB%E5%8B%9D%E3%81%A6%E3%82%8B%E9%8A%80%E3%81%AE%E5%BC%BE%E4%B8%B8">今更ながらの #isucon 3 参加報告：「isuconに勝てる銀の弾丸などなかった」</a>
+<a href="http://qtkmz.jp/blog/2013/11/13/isucon3.html">isucon 3 に参加しました</a></p>
+<p><a name="2"></a> *2 : templateやDB接続部等を含めて事前に準備をしてくれた @qtakamitsu に感謝</p>
+<p><a name="3"></a> *3 : 一方で優勝チームのように、どのようなお題が出たとしてもおおよそ必要になると思われる準備を事前に行うことは、時間制限のあるisuconにおいて極めて有効だと思います。</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'hisayosh'; // required: replace example with your forum shortname
+            var disqus_identifier = 'isucon';
+            var disqus_url = 'http://hisayosh.github.io/posts/2014/01/isucon/';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-lg-3 well well-sm" id="sidebar">
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="icon-home icon-large"></i>Social</h4></li>
+                    <li class="list-group-item"><a href="http://twitter.com/hisayosh"><i
+                            class="icon-twitter-sign icon-large"></i>twitter
+                    </a></li>
+                    <li class="list-group-item"><a href="http://www.linkedin.com/pub/hisayoshi-tamaki/35/26a/395"><i
+                            class="icon-linkedin-sign icon-large"></i>linkedin
+                    </a></li>
+                    <li class="list-group-item"><a href="http://github.com/hisayosh"><i
+                            class="icon-github-sign icon-large"></i>github
+                    </a></li>
+
+
+
+            <li class="list-group-item"><a href="../../../../tags.html"><h4><i class="icon-tags icon-large"></i>Tags</h4></a></li>
+                <li class="list-group-item tag-1">
+                    <a href="../../../../tag/linux.html">
+                        Linux
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/tool.html">
+                        Tool
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/oauth.html">
+                        OAuth
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/bug.html">
+                        Bug
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/isucon.html">
+                        isucon
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/openid-connect.html">
+                        OpenID Connect
+                    </a>
+                </li>
+        </ul>
+    </section>
+</aside>        </div>
+    </div>
+</div>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../../../theme/js/respond.min.js"></script>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'hisayosh'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
+</html>
