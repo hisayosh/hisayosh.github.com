@@ -105,6 +105,10 @@
                 <p>Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により<strong>再度類似の不具合が発生することが分かっています。</strong></p>
 <p>旧 208.5 日問題の発生原理に関しては以下の blog が参考になります。<br />
 <a href="http://kenichiokuyama.blogspot.jp/2011/12/schedclock-overflow-after-2085-days-in.html">okkyの銀河制圧奇譚 : sched_clock() overflow after 208.5 days in Linux Kernel</a></p>
+<h3><strong>追記(2014/1/4)</strong></h3>
+<hr />
+<p>新208.5日問題の簡易チェックツールを作成しました。よろしければお使い下さい。 </p>
+<p><a href="http://hisayosh.github.io/posts/2013/12/tsc_checker/">tsc_checker - 新208.5日問題簡易チェックツール</a>  </p>
 <h3><strong>影響範囲</strong></h3>
 <hr />
 <p>旧 208.5 日問題の対策パッチがあたっている Linux Kernel であっても、本 208.5 日問題は異なるロジックにより発生するため、<strong>影響を受けます。</strong></p>
@@ -188,13 +192,11 @@
 <p>旧 208.5 日問題とは異なり、<strong>稼働中の OS では発生しませんが、再起動時に突然ハング状態になるため、対策パッチをあてるか、tsc.c &amp; kernel.h を自前で修正してリビルドするか、運用プロセスを一時的に変更する必要があると思います。</strong>kexec時も同様の問題が起きるはずですので、ご注意ください。</p>
 <p>記事に間違いや不明な点がありましたら、ご指摘下さい。</p>
 <h3>参考URL</h3>
+<hr />
 <ul>
 <li><a href="https://access.redhat.com/site/solutions/433883">Red Hat : Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</a>  </li>
 <li><a href="http://kernel.opensuse.org/cgit/kernel/commit/?id=9993bc635d01a6ee7f6b833b4ee65ce7c06350b1">OpenSUSE : sched/x86: Fix overflow in cyc2ns_offset</a></li>
 </ul>
-<h3>追記(2014/1/4)</h3>
-<p>新208.5日問題の簡易チェックツールを作成しました。よろしければお使い下さい。</p>
-<p><a href="http://hisayosh.github.io/posts/2013/12/tsc_checker/">tsc_checker - 新208.5日問題簡易チェックツール</a></p>
             </div>
             <!-- /.entry-content -->
     <hr />
@@ -249,8 +251,13 @@
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/bug.html">
-                        Bug
+                    <a href="../../../../tag/oauth.html">
+                        OAuth
+                    </a>
+                </li>
+                <li class="list-group-item tag-4">
+                    <a href="../../../../tag/isucon.html">
+                        isucon
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
@@ -259,13 +266,8 @@
                     </a>
                 </li>
                 <li class="list-group-item tag-4">
-                    <a href="../../../../tag/oauth.html">
-                        OAuth
-                    </a>
-                </li>
-                <li class="list-group-item tag-4">
-                    <a href="../../../../tag/isucon.html">
-                        isucon
+                    <a href="../../../../tag/bug.html">
+                        Bug
                     </a>
                 </li>
                 <li class="list-group-item tag-4">

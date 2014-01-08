@@ -101,6 +101,10 @@
 &lt;a name="4"&gt;&lt;/a&gt; *4 : scale factor 値&lt;/p&gt;</summary><category term="Linux"></category><category term="Tool"></category></entry><entry><title>新208.5日問題 - Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6</title><link href="http://hisayosh.github.io/posts/2013/12/208days-problem/" rel="alternate"></link><updated>2013-12-24T12:25:00+09:00</updated><author><name>Hisayoshi Tamaki</name></author><id>tag:hisayosh.github.io,2013-12-24:posts/2013/12/208days-problem/</id><summary type="html">&lt;p&gt;Linux の連続稼働時間が 208.5 日を過ぎた段階で突如 Kernel Panic を引き起こすという過激な挙動で2011年の年の瀬に話題となった "旧208.5日問題" ですが、あれから二年が経った今、Linux Kernel 内の bug と Intel Xeon CPU の bug の合わせ技により&lt;strong&gt;再度類似の不具合が発生することが分かっています。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;旧 208.5 日問題の発生原理に関しては以下の blog が参考になります。&lt;br /&gt;
 &lt;a href="http://kenichiokuyama.blogspot.jp/2011/12/schedclock-overflow-after-2085-days-in.html"&gt;okkyの銀河制圧奇譚 : sched_clock() overflow after 208.5 days in Linux Kernel&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;追記(2014/1/4)&lt;/strong&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;新208.5日問題の簡易チェックツールを作成しました。よろしければお使い下さい。 &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hisayosh.github.io/posts/2013/12/tsc_checker/"&gt;tsc_checker - 新208.5日問題簡易チェックツール&lt;/a&gt;  &lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;影響範囲&lt;/strong&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;p&gt;旧 208.5 日問題の対策パッチがあたっている Linux Kernel であっても、本 208.5 日問題は異なるロジックにより発生するため、&lt;strong&gt;影響を受けます。&lt;/strong&gt;&lt;/p&gt;
@@ -184,10 +188,8 @@
 &lt;p&gt;旧 208.5 日問題とは異なり、&lt;strong&gt;稼働中の OS では発生しませんが、再起動時に突然ハング状態になるため、対策パッチをあてるか、tsc.c &amp;amp; kernel.h を自前で修正してリビルドするか、運用プロセスを一時的に変更する必要があると思います。&lt;/strong&gt;kexec時も同様の問題が起きるはずですので、ご注意ください。&lt;/p&gt;
 &lt;p&gt;記事に間違いや不明な点がありましたら、ご指摘下さい。&lt;/p&gt;
 &lt;h3&gt;参考URL&lt;/h3&gt;
+&lt;hr /&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://access.redhat.com/site/solutions/433883"&gt;Red Hat : Systems with Intel® Xeon® Processor E5 hung after upgrade of Red Hat Enterprise Linux 6&lt;/a&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;a href="http://kernel.opensuse.org/cgit/kernel/commit/?id=9993bc635d01a6ee7f6b833b4ee65ce7c06350b1"&gt;OpenSUSE : sched/x86: Fix overflow in cyc2ns_offset&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;追記(2014/1/4)&lt;/h3&gt;
-&lt;p&gt;新208.5日問題の簡易チェックツールを作成しました。よろしければお使い下さい。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://hisayosh.github.io/posts/2013/12/tsc_checker/"&gt;tsc_checker - 新208.5日問題簡易チェックツール&lt;/a&gt;&lt;/p&gt;</summary><category term="Linux"></category><category term="Bug"></category></entry></feed>
+&lt;/ul&gt;</summary><category term="Linux"></category><category term="Bug"></category></entry></feed>
