@@ -105,6 +105,9 @@
 &lt;hr /&gt;
 &lt;p&gt;新208.5日問題の簡易チェックツールを作成しました。よろしければお使い下さい。 &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://hisayosh.github.io/posts/2013/12/tsc_checker/"&gt;tsc_checker - 新208.5日問題簡易チェックツール&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;また、Linux Kernel における時間管理に関しては、以下の本の6章「時間管理」に詳細が載っていますので、原理・理論からおさえたい方は一読を推奨します。  &lt;/p&gt;
+&lt;iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;npa=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=hisayosh-22&amp;o=9&amp;p=8&amp;l=as1&amp;m=amazon&amp;f=ifr&amp;ref=qf_sp_asin_til&amp;asins=487311313X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"&gt;&lt;/iframe&gt;
+
 &lt;h3&gt;&lt;strong&gt;影響範囲&lt;/strong&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;p&gt;旧 208.5 日問題の対策パッチがあたっている Linux Kernel であっても、本 208.5 日問題は異なるロジックにより発生するため、&lt;strong&gt;影響を受けます。&lt;/strong&gt;&lt;/p&gt;
